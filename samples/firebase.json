@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "crewdle-samples",
+      "public": "www",
+      "cleanUrls": true
+    }
+  ]
+}

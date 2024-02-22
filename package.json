@@ -1,0 +1,27 @@
+{
+  "name": "crewdle",
+  "version": "0.1.0-beta.1",
+  "description": "The Web SDK to integrate the Crewdle Mist Computing Platform",
+  "main": "dist/sdk.js",
+  "types": "dist/sdk.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "github.com/Crewdle/web-sdk"
+  },
+  "keywords": [
+    "Crewdle",
+    "P2P",
+    "SDK",
+    "Mist"
+  ],
+  "author": "Crewdle Technologies Inc.",
+  "license": "SEE LICENSE IN license.md",
+  "dependencies": {
+    "@aws-crypto/sha256-js": "^5.2.0",
+    "@datadog/browser-logs": "^5.8.0",
+    "aws-amplify": "^6.0.13",
+    "firebase": "^10.8.0",
+    "uuid": "^9.0.1",
+    "webrtc-adapter": "^8.2.3"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "targets": {
+    "crewdle-sdk-stg": {
+      "hosting": {
+        "crewdle-samples": [
+          "crewdle-samples-stg"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "stg": "crewdle-sdk-stg",
+    "default": "crewdle-sdk-stg"
+  }
+}
