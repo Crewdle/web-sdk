@@ -3,6 +3,8 @@ const path = require('path');
 module.exports = {
   entry: {
     index: './src/index.ts',
+    chat: './src/chat/index.ts',
+    pubsub: './src/pubsub/index.ts',
   },
 
   module: {

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crewdle Chat App</title>
+    <link rel="stylesheet" href="chat.css">
+    <script src="/scripts/chat.js"></script>
+</head>
+<body>
+  <div id="chat-container" class="chat-container">
+    <div id="chat-sidebar" class="collapsed chat-sidebar">
+      <div class="header sidebar-header">
+        <h2>Users</h2>
+      </div>
+      <ul id="user-list" class="user-list">
+      </ul>
+    </div>
+    <div id="chat-app" class="chat-app">
+      <div class="header">
+        <h2>Crewdle Chat Room</h2>
+      </div>
+      <div class="messages" id="chat">
+      </div>
+      <div class="form" id="controls">
+        <button type="button" class="button label-button" id="sidebar-toggle" onclick="Crewdle.toggleUsers()">Toggle user list</button>
+        <label for="file" class="button label-button">Attach</label>
+        <input type="file" id="file" style="display: none;" onchange="Crewdle.sendFile(event)">
+        <input type="text" class="input" id="message" placeholder="Type a message..." onkeypress="Crewdle.input(event)">
+        <button type="button" class="button" id="send" onclick="Crewdle.send()">Send</button>
+      </div>
+    </div>
+  </div>
+    <script>
+      const queryParams = new URLSearchParams(window.location.search);
+      const channelId = queryParams.get('cluster');
+      const userId = queryParams.get('user');
+
+      if (!channelId || !userId) {
+        throw new Error('Missing channelId or userId query params');
+      }
+
+      window.onload = async function () {
+        Crewdle.start(channelId, userId);
+      };
+    </script>
+</body>
+</html>

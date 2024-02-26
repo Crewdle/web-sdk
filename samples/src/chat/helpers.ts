@@ -1,0 +1,109 @@
+import { IValueType } from 'crewdle';
+
+export interface IFile {
+  name: string;
+  type: string;
+  path: string;
+}
+
+export interface User extends IValueType{
+  senderId: string;
+  isOnline: boolean;
+}
+
+export function readFile(file: IFile, senderId: string, userId: string) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    const chat = document.getElementById('chat') as HTMLDivElement;
+    const messageDiv = document.createElement('p');
+
+    let [senderNameEl, senderClass] = senderId === userId ? ['<b>me</b>', ['message', 'outgoing']] : [`<b>${senderId}</b>`, ['message', 'incoming']];
+    if (file.type.startsWith('image')) {
+      messageDiv.innerHTML = `${senderNameEl} ${(new Date).toLocaleTimeString('en-US')}<br><img src="${reader.result}" />`;
+    } else if (file.type.startsWith('video')) {
+      messageDiv.innerHTML = `${senderNameEl} ${(new Date).toLocaleTimeString('en-US')}<br><video src="${reader.result}" controls></video>`;
+    } else {
+      messageDiv.innerHTML = `${senderNameEl} ${(new Date).toLocaleTimeString('en-US')}<br><a href="${reader.result}" download=${file.name} style="color: #fff">${file.name}</a>`;
+    }
+    messageDiv.classList.add(senderClass[0], senderClass[1]);
+    chat.appendChild(messageDiv);
+    autoScrollDown();
+  };
+
+  return reader;
+}
+
+export function renderTextMessage(id: string, message: string, senderId: string, timestamp: number, userId: string) {
+  const chat = document.getElementById('chat') as HTMLDivElement;
+  const messageDiv = document.createElement('div');
+  messageDiv.id = id;
+  const messageDate = new Date(timestamp);
+  const isUserMessage = senderId === userId;
+
+  const messageHTML = generateMessageHTML(message, senderId, id, messageDate, isUserMessage);
+
+  messageDiv.innerHTML = messageHTML;
+  messageDiv.classList.add('message', isUserMessage ? 'outgoing' : 'incoming');
+
+  chat.appendChild(messageDiv);
+  autoScrollDown();
+}
+
+export function generateMessageHTML(message: string, senderId: string, id: string, messageDate: Date, isUserMessage: boolean) {
+  let messageHTML = `<b>${isUserMessage ? 'me' : senderId}</b> ${messageDate.toLocaleTimeString('en-US')}<br>${linkify(message)}
+  `;
+
+  if (isUserMessage) {
+    messageHTML += `
+      <div class="message-actions">
+        <button class="button edit-message-btn" onclick="Crewdle.editMessage('${id}')">Edit</button>
+        <button class="button delete-message-btn" onclick="Crewdle.deleteMessage('${id}')">Delete</button>
+      </div>
+    `;
+  }
+
+  return messageHTML;
+}
+
+export function updateUserList(users: User[]) {
+  const userListElement = document.getElementById('user-list') as HTMLUListElement;
+  userListElement.innerHTML = '';
+
+  users.forEach(user => {
+      const userItem = document.createElement('li');
+      userItem.classList.add('user-item');
+      userItem.textContent = user.senderId;
+
+      const statusIndicator = document.createElement('span');
+      statusIndicator.classList.add('indicator');
+      statusIndicator.classList.add(
+          user.isOnline ? 'online' : 'offline'
+      );
+
+      userItem.prepend(statusIndicator);
+      userListElement.appendChild(userItem);
+  });
+}
+
+
+function autoScrollDown () {
+  setTimeout(() => {
+    const chat = document.getElementById('chat') as HTMLDivElement;
+    chat.scrollTop = chat.scrollHeight;
+  }, 1);
+}
+
+function linkify(message: string) {
+  const urlRegex = /((?:https?|ftp):\/\/[\S]+)/gi;
+  const emailRegex = /([^\s@]+@[^\s@]+\.[^\s@]+)/gi;
+
+  const linkifiedText = message
+    .replace(urlRegex, (match) =>
+      `<a href="${match}" target="_blank">${match}</a>`
+    )
+    .replace(emailRegex, (match) =>
+      `<a href="mailto:${match}">${match}</a>`
+    );
+
+  return linkifiedText;
+}
