@@ -4,7 +4,8 @@ module.exports = {
   entry: {
     index: './src/index.ts',
     chat: './src/chat/index.ts',
-    pubsub: './src/pubsub/index.ts',
+    monitoring: './src/monitoring/index.ts',
+    monitoringComponent: './src/monitoring/component.ts',
   },
 
   module: {

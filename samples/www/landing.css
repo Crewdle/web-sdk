@@ -1,0 +1,73 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('samples/www/font/Inter.ttf');
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #18191A;
+  color: #d3d5dd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 37.5rem; /* 600px */
+  background-color: #242526; /* Primary container background */
+  border-radius: 8px;
+  padding: 2rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.intro__description {
+  color: #d3d5dd;
+  margin-bottom: 2rem;
+}
+
+/* Minimalistic Button Styles */
+.button, .intro__button, .sample__button {
+  padding: 0.625rem 1.25rem;
+  border: 2px solid #4C17CA; /* Solid border with primary color */
+  border-radius: 1.25rem;
+  background-color: transparent; /* Transparent background for minimalism */
+  color: #d3d5dd; /* Consistent text color */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover, .intro__button:hover, .sample__button:hover {
+  background-color: #4C17CA; /* Fill color on hover for visibility */
+  color: #fff; /* White text on hover for contrast */
+}
+
+.sample {
+  margin-bottom: 1.5rem;
+}
+
+.sample:last-child {
+  border-bottom: none;
+}
+
+.sample__description {
+  color: #d3d5dd;
+  margin: 0.75rem 0;
+}
+
+.sample__button {
+  padding: 0.625rem 1.25rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 1.25rem;
+  background-color: #4C17CA;
+  color: #fff;
+  cursor: pointer;
+}
+
+.sample__button:hover {
+  background-color: #5B21B6;
+}
