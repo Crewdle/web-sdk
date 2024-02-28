@@ -3,7 +3,7 @@
   "version": "0.1.0-beta.1",
   "description": "The Web SDK to integrate the Crewdle Mist Computing Platform",
   "main": "dist/sdk.js",
-  "types": "dist/sdk.d.ts",
+  "types": "dist/types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "github.com/Crewdle/web-sdk"

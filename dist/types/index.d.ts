@@ -21,6 +21,6 @@ export { ILoggingConnector } from './interfaces/SDK/LoggingConnector';
 export { ISDK } from './interfaces/SDK/SDK';
 export { ISDKOptions } from './interfaces/SDK/SDKOptions';
 export { SDKClientErrorCodes } from './errors/SDKClientError';
-export { QueryBuilder } from './models/Content/KeyValueDatabaseQueryBuilder';
 export { LayoutBuilder } from './models/Content/KeyValueDatabaseLayoutBuilder';
+export { QueryBuilder } from './models/Content/KeyValueDatabaseQueryBuilder';
 export { SDK } from './models/SDK/SDK';

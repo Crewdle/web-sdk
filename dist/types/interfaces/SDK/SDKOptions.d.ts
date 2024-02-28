@@ -20,7 +20,7 @@ export interface ISDKOptions {
      */
     maxOutgoingSubscriptions?: number;
     /**
-     * The maximum number of initial connections.
+     * The minimum number of initial connections.
      */
     minConnections?: number;
     /**

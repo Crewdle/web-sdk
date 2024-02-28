@@ -1,4 +1,3 @@
-import { LoggingChannels } from "interfaces/Utils/Logger";
 export type LoggingConnectorEvent = {
     vendorId: string;
     clusterId?: string;
@@ -28,8 +27,4 @@ export interface ILoggingConnector {
      * @param event The event to log.
      */
     error(message: string, event: LoggingConnectorEvent): void;
-    /**
-     * Returns the enabled clusters.
-     */
-    getEnabledChannels(): LoggingChannels[];
 }

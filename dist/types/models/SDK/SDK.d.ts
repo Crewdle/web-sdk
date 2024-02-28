@@ -8,25 +8,6 @@ import { ISDKOptions } from '../../interfaces/SDK/SDKOptions';
  * This is the entry point for the Crewdle SDK.
  */
 export declare class SDK implements ISDK {
-    private static instance;
-    /**
-     * @internal
-     */
-    private readonly authService;
-    private readonly vendorId;
-    private readonly options;
-    /**
-     * @internal
-     */
-    private readonly configs;
-    /**
-     * @internal
-     */
-    private authContext?;
-    /**
-     * @internal
-     */
-    private constructor();
     /**
      * Get an instance of the SDK.
      * @param vendorId The ID of the vendor to access the SDK.
@@ -40,15 +21,16 @@ export declare class SDK implements ISDK {
      */
     static timestamp(): Promise<number>;
     /**
-     * @internal
-     */
-    private static validateAccess;
-    /**
-     * @internal
+     * Authenticate a user.
+     * @param credentials The credentials to authenticate the user with.
+     * @returns A promise that resolves with the authenticated user.
      */
     authenticateUser(credentials: ICredentials): Promise<IAuthUser>;
     /**
-     * @internal
+     * Join a cluster.
+     * @param clusterId The ID of the cluster to join.
+     * @returns A promise that resolves with the cluster.
+     * @throws {@link SDKClientErrorCodes.UserNotAuthenticated} if the user is not authenticated.
      */
     joinCluster(clusterId: string): Promise<ICluster>;
 }
