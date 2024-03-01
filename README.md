@@ -20,7 +20,7 @@ Before diving in, ensure you have a Vendor ID and an Access Token. Register to t
 - [Integration Guides](https://guides.crewdle.com)
 - [SDK Reference](https://docs.crewdle.com)
 - [Samples](https://samples.crewdle.com)
-- [NPM Package](https://npm.com/crewdle)
+- [NPM Package](https://npm.com/@crewdle/web-sdk)
 - [Join our Developer Community](https://discord.gg/Nr2ujqCd)
 
 ## Installation
