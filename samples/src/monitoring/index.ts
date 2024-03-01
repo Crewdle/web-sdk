@@ -6,12 +6,9 @@
 
 // SDK and Helpers Imports
 import { ContentType, SDK } from 'crewdle';
+import { vendorId, accessToken } from '../credentials'
 import { ICpuData, IDiskData, IMemoryData, updateInfo } from './helpers';
 import { updateGraphData } from './graph';
-
-// Input your vendor id and access token here
-const vendorId = 'CREWDLE_VENDOR_ID';
-const accessToken = `CREWDLE_ACCESS_TOKEN`;
 
 // This is used to define the structure of the messages that can pass through the Pub/Sub
 interface IMonitoringMessage {

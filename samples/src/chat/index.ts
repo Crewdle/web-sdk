@@ -7,6 +7,7 @@
 
 // SDK and Interface Imports
 import { PayloadAction, IObjectStoreBucket, IDatabaseEvent, IDatabaseTable, IValueType, QueryBuilder, SDK, LayoutBuilder, DatabaseEvent } from 'crewdle';
+import { vendorId, accessToken } from '../credentials';
 
 const KeyValueDatabase = {
   timestamp: () => Date.now(),
@@ -14,10 +15,6 @@ const KeyValueDatabase = {
 
 // Helpers
 import { generateMessageHTML, IFile, readFile, renderTextMessage, updateUserList, User } from './helpers';
-
-// Input your vendor id and access token here
-const vendorId = 'CREWDLE_VENDOR_ID';
-const accessToken = `CREWDLE_ACCESS_TOKEN`;
 
 // This is used to define the structure of the chat message in the key-value database table
 interface IChatMessage extends IValueType {

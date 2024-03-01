@@ -3,10 +3,8 @@
 // Functions used here are the same as in the monitoring.ts file.
 
 import { SDK } from 'crewdle';
+import { vendorId, accessToken } from '../credentials'
 import { generateData, updateData } from './helpers';
-
-const vendorId = 'CREWDLE_VENDOR_ID';
-const accessToken = `CREWDLE_ACCESS_TOKEN`;
 
 interface IMonitoringMessage {
   values: any;
