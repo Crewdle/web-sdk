@@ -1,6 +1,7 @@
 import { ILoggingConnector } from '../SDK/LoggingConnector';
 /**
  * Options to configure the SDK.
+ * @category Core
  */
 export interface ISDKOptions {
     /**

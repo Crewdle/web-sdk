@@ -3,6 +3,7 @@ import { IAuthUser } from '../Node/LocalUser';
 import { ICredentials } from '../SDK/Credentials';
 /**
  * The SDK interface.
+ * @category Core
  */
 export interface ISDK {
     /**

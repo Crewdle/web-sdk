@@ -1,5 +1,6 @@
 /**
  * The credentials interface.
+ * @category Core
  */
 export interface ICredentials {
     /**

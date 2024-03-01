@@ -2,6 +2,7 @@ import { IMediaStream } from './MediaStream';
 import { MediaStreamTransformer } from './Types';
 /**
  * The dynamic media stream interface.
+ * @category Media Stream
  */
 export interface IDynamicMediaStream extends IMediaStream {
     /**

@@ -1,6 +1,7 @@
 import { ClusterOnFunction } from './Types';
 /**
  * The cluster event emitter interface.
+ * @category Core
  */
 export interface IClusterEventEmitter {
     /**

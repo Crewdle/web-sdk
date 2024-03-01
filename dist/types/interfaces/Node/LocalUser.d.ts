@@ -1,6 +1,7 @@
 import { IUser } from './User';
 /**
  * The authenticated user interface.
+ * @category Core
  */
 export interface IAuthUser {
     /**
@@ -31,6 +32,7 @@ export interface IAuthUser {
 }
 /**
  * The local user interface.
+ * @category Core
  */
 export interface ILocalUser extends IUser {
     /**

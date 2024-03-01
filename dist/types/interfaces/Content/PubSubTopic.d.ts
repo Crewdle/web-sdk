@@ -1,8 +1,17 @@
 import { IDataStream } from './DataStream';
 /**
  * The pub/sub topic interface.
+ * @category Pub/Sub
  */
 export interface IPubSubTopic<T> extends IDataStream {
+    /**
+     * Get the name of the topic.
+     */
+    getName(): string;
+    /**
+     * Get the owner ID of the topic.
+     */
+    getOwnerId(): string;
     /**
      * Publish content to the topic.
      * @param content The content to publish. Content needs to be a valid JSON.stringify argument.
@@ -27,6 +36,7 @@ export interface IPubSubTopic<T> extends IDataStream {
 }
 /**
  * The pub/sub topic subscriptions interface.
+ * @category Pub/Sub
  */
 export interface ISubscriptions<T> {
     /**
@@ -44,10 +54,12 @@ export interface ISubscriptions<T> {
 }
 /**
  * The pub/sub topic subscription keys.
+ * @category Pub/Sub
  */
 export type SubscriptionKeys<T> = keyof ISubscriptions<T>;
 /**
  * The pub/sub topic subscribe function.
+ * @category Pub/Sub
  */
 export type SubscribeFunction<T> = {
     /**

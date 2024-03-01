@@ -1,6 +1,7 @@
 import { IDatabaseLayout, ITableLayout } from '../../interfaces/Content/KeyValueDatabase';
 /**
- * A layout builder for the {@link KeyValueDatabase}.
+ * A layout builder for the {@link IKeyValueDatabase}.
+ * @category Key-Value Database
  */
 export declare class LayoutBuilder {
     private layout;
@@ -30,9 +31,10 @@ export declare class LayoutBuilder {
     getLayout(): IDatabaseLayout;
 }
 /**
- * A table builder for the {@link KeyValueDatabase}.
+ * A table builder for the {@link IKeyValueDatabase}.
+ * @category Key-Value Database
  */
-declare class TableBuilder {
+export declare class TableBuilder {
     private tableLayout;
     /**
      * @ignore
@@ -45,4 +47,3 @@ declare class TableBuilder {
      */
     index(name: string): TableBuilder;
 }
-export {};

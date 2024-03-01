@@ -3,6 +3,7 @@ import { ILocalMediaStream } from './LocalMediaStream';
 import { MediaTrackKind } from './Types';
 /**
  * The local dynamic media stream interface.
+ * @category Media Stream
  */
 export interface ILocalDynamicMediaStream extends ILocalMediaStream, IDynamicMediaStream {
     /**

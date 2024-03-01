@@ -1,8 +1,18 @@
+import { IDataStream } from './DataStream';
 import type { QueryBuilder } from '../../models/Content/KeyValueDatabaseQueryBuilder';
 /**
  * Interface for a key-value database.
+ * @category Key-Value Database
  */
-export interface IKeyValueDatabase {
+export interface IKeyValueDatabase extends IDataStream {
+    /**
+     * Get the name of the database.
+     */
+    getName(): string;
+    /**
+     * Get the owner ID of the database.
+     */
+    getOwnerId(): string;
     /**
      * Close the database.
      */
@@ -25,6 +35,7 @@ export interface IKeyValueDatabase {
 }
 /**
  * Interface for a key-value database table.
+ * @category Key-Value Database
  */
 export interface IDatabaseTable<T extends IValueType> {
     /**
@@ -85,12 +96,17 @@ export interface IDatabaseTable<T extends IValueType> {
 }
 /**
  * The supported key-value database events.
+ * @category Key-Value Database
  */
 export declare enum DatabaseEvent {
+    /**
+     * The database synchronization is complete.
+     */
     SyncComplete = "sync-complete"
 }
 /**
  * Interface for key-value database events.
+ * @category Key-Value Database
  */
 export interface IDatabaseEvent {
     /**
@@ -100,6 +116,7 @@ export interface IDatabaseEvent {
 }
 /**
  * Interface for key-value database table events.
+ * @category Key-Value Database
  */
 export interface IDatabaseTableEvent<T extends IValueType> {
     /**
@@ -111,6 +128,10 @@ export interface IDatabaseTableEvent<T extends IValueType> {
      */
     value: T;
 }
+/**
+ * The supported key-value database table actions.
+ * @category Key-Value Database
+ */
 export type IDatabaseTableAction = 'add' | 'update' | 'delete';
 /**
  * Interface for a key-value database layout.
@@ -123,7 +144,7 @@ export type IDatabaseTableAction = 'add' | 'update' | 'delete';
  *     ],
  *   },
  * }
- *
+ * @category Key-Value Database
  */
 export interface IDatabaseLayout {
     /**
@@ -133,10 +154,14 @@ export interface IDatabaseLayout {
     tables: {
         [tableName: string]: ITableLayout;
     };
+    /**
+     * The version of the layout.
+     */
     version: number;
 }
 /**
  * Interface for a key-value database table layout.
+ * @category Key-Value Database
  */
 export interface ITableLayout {
     /**
@@ -146,6 +171,7 @@ export interface ITableLayout {
 }
 /**
  * Interface for a key-value database table index layout.
+ * @category Key-Value Database
  */
 export interface ITableIndex {
     /**
@@ -156,20 +182,27 @@ export interface ITableIndex {
 /**
  * Base interface for all value types.
  * Value types define the value of objects in a {@link IDatabaseTable}.
+ * @category Key-Value Database
  */
 export interface IValueType {
+    /**
+     * The primary key of the object.
+     */
     id: string;
 }
 /**
  * An helper type used to set or add object values in a {@link IDatabaseTable} without explicitely defining an id.
+ * @category Key-Value Database
  */
 export type ValueTypeOmitId<T extends IValueType> = Omit<T, 'id'>;
 /**
  * The supported types for indexed keys.
+ * @category Key-Value Database
  */
 export type SupportedIndexTypes = string | number | boolean;
 /**
  * Interface for a key-value database table query.
+ * @category Key-Value Database
  */
 export interface IDatabaseTableQuery {
     /**
@@ -185,13 +218,17 @@ export interface IDatabaseTableQuery {
         direction: 'asc' | 'desc';
     };
     /**
-     * The limit and offset for the query, allowing pagination.
+     * The limit for the query, allowing pagination.
      */
     limit?: number;
+    /**
+     * The offset for the query, allowing pagination.
+     */
     offset?: number;
 }
 /**
  * Interface for a where clause with basic operators and a single value.
+ * @category Key-Value Database
  */
 export interface IDatabaseTableQueryWhereValue {
     /**
@@ -209,6 +246,7 @@ export interface IDatabaseTableQueryWhereValue {
 }
 /**
  * Interface for a where values are 'in' or 'not-in' the given values.
+ * @category Key-Value Database
  */
 export interface IDatabaseTableQueryWhereValues {
     /**
@@ -227,6 +265,7 @@ export interface IDatabaseTableQueryWhereValues {
 /**
  * Interface for a where values are 'between' the lower and upper bounds.
  * Between is always inclusive.
+ * @category Key-Value Database
  */
 export interface IDatabaseTableQueryWhereBetween {
     /**

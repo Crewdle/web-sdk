@@ -1,6 +1,11 @@
 .DS_Store
-node_modules/
 package-lock.json
 firebase-debug.log
+.firebaserc
+firebase.json
+
 .firebase/
+docs/
+guides/
+node_modules/
 samples/www/scripts/

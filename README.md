@@ -12,7 +12,16 @@ Welcome to the Crewdle Web SDK! This toolkit empowers developers to seamlessly i
 
 ## Getting Started
 
-Before diving in, ensure you have a Vendor ID and an Access Token. Register to the [Crewdle Developer Console](https://dashboard.crewdle.com/signup) if you haven't already.
+Before diving in, ensure you have a Vendor ID and an Access Token. Register to the [Crewdle Mist Developer Console](https://dashboard.crewdle.com/signup) if you haven't already.
+
+## Additional Resources
+
+- [Developer Console](https://dashboard.crewdle.com)
+- [Integration Guides](https://guides.crewdle.com)
+- [SDK Reference](https://docs.crewdle.com)
+- [Samples](https://samples.crewdle.com)
+- [NPM Package](https://npm.com/crewdle)
+- [Join our Developer Community](https://discord.gg/Nr2ujqCd)
 
 ## Installation
 

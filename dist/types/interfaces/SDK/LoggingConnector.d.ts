@@ -1,3 +1,7 @@
+/**
+ * The logging connector event.
+ * @category Core
+ */
 export type LoggingConnectorEvent = {
     vendorId: string;
     clusterId?: string;
@@ -7,6 +11,7 @@ export type LoggingConnectorEvent = {
 };
 /**
  * The logging connector interface.
+ * @category Core
  */
 export interface ILoggingConnector {
     /**

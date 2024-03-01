@@ -6,8 +6,13 @@ import { ISDKOptions } from '../../interfaces/SDK/SDKOptions';
 /**
  * The SDK class.
  * This is the entry point for the Crewdle SDK.
+ * @category Core
  */
 export declare class SDK implements ISDK {
+    /**
+     * @ignore
+     */
+    private constructor();
     /**
      * Get an instance of the SDK.
      * @param vendorId The ID of the vendor to access the SDK.

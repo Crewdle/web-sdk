@@ -1,6 +1,7 @@
 import { IDatabaseTableQuery, IDatabaseTableQueryWhereValue, IDatabaseTableQueryWhereValues, IDatabaseTableQueryWhereBetween } from '../../interfaces/Content/KeyValueDatabase';
 /**
- * A QueryBuilder helper for building queries for the {@link DatabaseTable}.
+ * A QueryBuilder helper for building queries for the {@link IDatabaseTable}.
+ * @category Key-Value Database
  */
 export declare class QueryBuilder {
     /**

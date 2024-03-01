@@ -2,6 +2,7 @@ import { IMediaStream } from './MediaStream';
 import { MediaStreamPriority } from './Types';
 /**
  * The local media stream interface.
+ * @category Media Stream
  */
 export interface ILocalMediaStream extends IMediaStream {
     /**

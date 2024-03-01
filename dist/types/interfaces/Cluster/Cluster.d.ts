@@ -18,6 +18,7 @@ import type { LayoutBuilder } from '../../models/Content/KeyValueDatabaseLayoutB
  */
 /**
  * The cluster interface.
+ * @category Core
  */
 export interface ICluster extends IClusterEventEmitter {
     /**
@@ -32,7 +33,7 @@ export interface ICluster extends IClusterEventEmitter {
      * Open a pub/sub topic.
      * @param name The name of the PubSub Topic.
      * @throws {@link SDKClientErrorCodes.PubSubTopicAlreadyExists} if the topic already exists
-     * @throws {@link SDKClientErrorCodes.PubSubTopicLabelNotString} if the name is not a string.
+     * @throws {@link SDKClientErrorCodes.PubSubTopicNameNotString} if the name is not a string.
      * @returns The pub/sub topic.
      */
     openPubSubTopic<T>(name: string): IPubSubTopic<T>;
@@ -40,7 +41,7 @@ export interface ICluster extends IClusterEventEmitter {
      * Open a object store bucket.
      * @param name The name of the Object Store bucket.
      * @throws {@link SDKClientErrorCodes.ObjectStoreAlreadyExists} if the data stream is already open.
-     * @throws {@link SDKClientErrorCodes.ObjectStoreLabelNotString} if the name is not a string.
+     * @throws {@link SDKClientErrorCodes.ObjectStoreNameNotString} if the name is not a string.
      * @returns A promise that resolves with the data stream.
      */
     openObjectStoreBucket(name: string): Promise<IObjectStoreBucket>;
@@ -48,6 +49,9 @@ export interface ICluster extends IClusterEventEmitter {
      * Open a key-value database.
      * @param name The name of the key-value database.
      * @param layout The {@link IDatabaseLayout | layout} of the key-value database.
+     * @throws {@link SDKClientErrorCodes.KeyValueDatabaseAlreadyExists} if the key-value database is already open.
+     * @throws {@link SDKClientErrorCodes.KeyValueDatabaseInvalidLayout} if the layout is invalid.
+     * @throws {@link SDKClientErrorCodes.KeyValueDatabaseNameNotString} if the name is not a string.
      * @returns A promise that resolves with the key-value database.
      */
     openKeyValueDatabase(name: string, layout: IDatabaseLayout | LayoutBuilder): Promise<IKeyValueDatabase>;
@@ -56,7 +60,6 @@ export interface ICluster extends IClusterEventEmitter {
      * @param label The label of the media stream.
      * @param mediaSource The media source to publish.
      * @throws {@link SDKClientErrorCodes.LocalMediaStreamAlreadyExists} if the media stream is already published.
-     * @throws {@link SDKClientErrorCodes.LocalMediaStreamInvalidSource} if the media source is invalid.
      * @returns The local media stream.
      */
     publishLocalMediaStream(label: string, mediaSource: MediaStreamSource): ILocalMediaStream;
@@ -65,7 +68,6 @@ export interface ICluster extends IClusterEventEmitter {
      * @param label The label of the media stream.
      * @param mediaSource The media source to publish.
      * @throws {@link SDKClientErrorCodes.LocalMediaStreamAlreadyExists} if the media stream is already published.
-     * @throws {@link SDKClientErrorCodes.LocalMediaStreamInvalidSource} if the media source is invalid.
      * @returns The local dynamic media stream.
      */
     publishLocalDynamicMediaStream(label: string, mediaSource: MediaStreamSource): ILocalDynamicMediaStream;

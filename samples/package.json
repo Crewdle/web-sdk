@@ -8,7 +8,7 @@
     "build": "webpack --mode=development",
     "build-prd": "webpack --mode=production"
   },
-  "author": "Crewdle",
+  "author": "Crewdle Technologies Inc.",
   "license": "ISC",
   "dependencies": {
     "crewdle": "https://github.com/Crewdle/web-sdk.git",

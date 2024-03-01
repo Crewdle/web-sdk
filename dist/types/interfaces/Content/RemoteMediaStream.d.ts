@@ -1,8 +1,13 @@
 import { IMediaStream } from './MediaStream';
 import { MediaSubscriptionParams, MediaTrackKind } from './Types';
+/**
+ * The unsubscribe callback.
+ * @category Media Stream
+ */
 export type Unsubscribe = () => void;
 /**
  * The remote media stream interface.
+ * @category Media Stream
  */
 export interface IRemoteMediaStream extends IMediaStream {
     /**
@@ -15,7 +20,6 @@ export interface IRemoteMediaStream extends IMediaStream {
      * @param params The subscription parameters.
      * @throws {@link SDKClientErrorCodes.SubscriptionRequestInProgress} if the subscription is already in progress.
      * @throws {@link SDKClientErrorCodes.RemoteMediaStreamInvalidSubscriptionParams} if the subscription parameters are invalid.
-     * @throws {@link SDKClientErrorCodes.InternalSDKError} if the subscription fails due to an internal SDK error.
      */
     subscribe(params?: MediaSubscriptionParams): void;
     /**
@@ -33,5 +37,5 @@ export interface IRemoteMediaStream extends IMediaStream {
      * Subscribe to when the provider of the stream changes.
      * @param callback The callback to invoke when the provider changes.
      */
-    onProviderChanged(callback: (provider: string | undefined) => void): Unsubscribe;
+    onProviderChanged(callback: (providerId: string | undefined) => void): Unsubscribe;
 }

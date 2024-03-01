@@ -1,5 +1,6 @@
 /**
  * The node interface.
+ * @category Core
  */
 export interface INode {
     /**
@@ -8,7 +9,7 @@ export interface INode {
      */
     getId(): string;
     /**
-     * Get remote connections.
+     * Get the remote connections.
      * @returns The remote connections.
      */
     getRemoteConnections(): Set<string>;

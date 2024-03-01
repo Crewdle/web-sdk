@@ -2,6 +2,7 @@ import { IRemoteMediaStream } from '../Content/RemoteMediaStream';
 import { MediaTrackKind } from '../Content/Types';
 /**
  * The user event payload interface.
+ * @category Core
  */
 export interface IUserEventPayload {
     /**
@@ -11,6 +12,7 @@ export interface IUserEventPayload {
 }
 /**
  * The user info event payload interface.
+ * @category Core
  */
 export interface IUserInfoEventPayload extends IUserEventPayload {
     /**
@@ -25,6 +27,7 @@ export interface IUserInfoEventPayload extends IUserEventPayload {
 }
 /**
  * The publish media stream event payload interface.
+ * @category Media Stream
  */
 export interface IPublishMediaStreamEventPayload {
     /**
@@ -38,6 +41,7 @@ export interface IPublishMediaStreamEventPayload {
 }
 /**
  * The unpublish media stream event payload interface.
+ * @category Media Stream
  */
 export interface IUnpublishMediaStreamEventPayload {
     /**
@@ -51,6 +55,7 @@ export interface IUnpublishMediaStreamEventPayload {
 }
 /**
  * The local media stream track fail event payload interface.
+ * @category Media Stream
  */
 export interface ILocalMediaStreamTrackFailEventPayload {
     /**
@@ -64,6 +69,7 @@ export interface ILocalMediaStreamTrackFailEventPayload {
 }
 /**
  * The cluster events interface.
+ * @category Core
  */
 export interface IClusterEvents {
     /**

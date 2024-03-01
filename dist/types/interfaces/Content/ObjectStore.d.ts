@@ -1,6 +1,7 @@
 import { IDataStream } from './DataStream';
 /**
  * The object kind enum.
+ * @category Object Storage
  */
 export declare enum ObjectKind {
     /**
@@ -14,6 +15,7 @@ export declare enum ObjectKind {
 }
 /**
  * The file descriptor interface.
+ * @category Object Storage
  */
 export interface IFileDescriptor {
     /**
@@ -43,6 +45,7 @@ export interface IFileDescriptor {
 }
 /**
  * The object store folder descriptor interface.
+ * @category Object Storage
  */
 export interface IFolderDescriptor {
     /**
@@ -68,10 +71,12 @@ export interface IFolderDescriptor {
 }
 /**
  * The object descriptor type.
+ * @category Object Storage
  */
 export type ObjectDescriptor = IFileDescriptor | IFolderDescriptor;
 /**
  * The object store payload action enum.
+ * @category Object Storage
  */
 export declare enum PayloadAction {
     /**
@@ -89,6 +94,7 @@ export declare enum PayloadAction {
 }
 /**
  * The file payload interface.
+ * @category Object Storage
  */
 export interface IFilePayload {
     /**
@@ -106,6 +112,7 @@ export interface IFilePayload {
 }
 /**
  * The object store folder payload interface.
+ * @category Object Storage
  */
 export interface IFolderPayload {
     /**
@@ -119,6 +126,7 @@ export interface IFolderPayload {
 }
 /**
  * The object store move payload interface.
+ * @category Object Storage
  */
 export interface IMovePayload {
     /**
@@ -135,11 +143,13 @@ export interface IMovePayload {
     newPath: string;
 }
 /**
- * The file store payload.
+ * The object store payload.
+ * @category Object Storage
  */
 export type Payload = IFilePayload | IFolderPayload | IMovePayload;
 /**
  * The file store event type enum.
+ * @category Object Storage
  */
 export declare enum StorageEventType {
     /**
@@ -169,6 +179,7 @@ export declare enum StorageEventType {
 }
 /**
  * The file write event payload interface.
+ * @category Object Storage
  */
 export interface IFileWriteEventPayload {
     /**
@@ -178,6 +189,7 @@ export interface IFileWriteEventPayload {
 }
 /**
  * The folder create event payload interface.
+ * @category Object Storage
  */
 export interface IFolderCreateEventPayload {
     /**
@@ -187,6 +199,7 @@ export interface IFolderCreateEventPayload {
 }
 /**
  * The object (file or folder) delete event payload interface.
+ * @category Object Storage
  */
 export interface IObjectDeleteEventPayload {
     /**
@@ -204,6 +217,7 @@ export interface IObjectDeleteEventPayload {
 }
 /**
  * The object (file or folder) move event payload interface.
+ * @category Object Storage
  */
 export interface IObjectMoveEventPayload {
     /**
@@ -233,6 +247,7 @@ export interface IObjectMoveEventPayload {
 }
 /**
  * The file write event interface.
+ * @category Object Storage
  */
 export interface IFileWriteEvent {
     /**
@@ -246,6 +261,7 @@ export interface IFileWriteEvent {
 }
 /**
  * The file delete event interface.
+ * @category Object Storage
  */
 export interface IFileDeleteEvent {
     /**
@@ -259,6 +275,7 @@ export interface IFileDeleteEvent {
 }
 /**
  * The file move event interface.
+ * @category Object Storage
  */
 export interface IFileMoveEvent {
     /**
@@ -272,6 +289,7 @@ export interface IFileMoveEvent {
 }
 /**
  * The folder create event interface.
+ * @category Object Storage
  */
 export interface IFolderCreateEvent {
     /**
@@ -285,6 +303,7 @@ export interface IFolderCreateEvent {
 }
 /**
  * The folder delete event interface.
+ * @category Object Storage
  */
 export interface IFolderDeleteEvent {
     /**
@@ -298,6 +317,7 @@ export interface IFolderDeleteEvent {
 }
 /**
  * The folder move event interface.
+ * @category Object Storage
  */
 export interface IFolderMoveEvent {
     /**
@@ -311,45 +331,55 @@ export interface IFolderMoveEvent {
 }
 /**
  * The object store event.
+ * @category Object Storage
  */
 export type StorageEvent = IFileWriteEvent | IFileDeleteEvent | IFileMoveEvent | IFolderCreateEvent | IFolderDeleteEvent | IFolderMoveEvent;
 /**
- * The object store interface.
+ * The object store bucket interface.
+ * @category Object Storage
  */
 export interface IObjectStoreBucket extends IDataStream {
     /**
-     * Close the object store.
+     * Get the name of the bucket.
+     */
+    getName(): string;
+    /**
+     * Get the owner ID of the bucket.
+     */
+    getOwnerId(): string;
+    /**
+     * Close the bucket.
      */
     close(): void;
     /**
-     * Subscribe to the object store events.
+     * Subscribe to the bucket events.
      * @param callback The callback function.
      */
     subscribe(callback: (data: StorageEvent) => void): void;
     /**
-     * Unsubscribe from the object store.
+     * Unsubscribe from the bucket.
      */
     unsubscribe(): void;
     /**
-     * Publish an action to the object store.
+     * Publish an action to the bucket.
      * @param payload The object store payload.
      * @returns A promise that resolves when the action is published.
      */
     publish(payload: Payload): Promise<void>;
     /**
-     * Unpublish an object from the object store. It also permanently deletes the object.
+     * Unpublish an object from the bucket. It also permanently deletes the object.
      * @param path The path of the object.
      * @returns A promise that resolves when the object is unpublished.
      */
     unpublish(path: string): Promise<void>;
     /**
-     * Get a object from the object store.
+     * Get an object from the bucket.
      * @param path The path of the object.
      * @returns The object.
      */
     get(path: string): Promise<File>;
     /**
-     * List the objects and folders of the object store.
+     * List the objects and folders of the bucket.
      * @param path The path of the folder.
      * @param recursive Whether to list the objects and folders recursively.
      * @returns The list of objects and folders.

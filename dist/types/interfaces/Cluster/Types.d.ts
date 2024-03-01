@@ -1,10 +1,12 @@
 import { IClusterEvents } from './ClusterEvents';
 /**
  * The event keys that can be listened to on a cluster.
+ * @category Core
  */
 export type ClusterEventKeys = keyof IClusterEvents;
 /**
  * A function that can be used to listen for events on a cluster.
+ * @category Core
  */
 export type ClusterOnFunction = {
     /**
