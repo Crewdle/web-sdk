@@ -26,7 +26,7 @@ Before diving in, ensure you have a Vendor ID and an Access Token. Register to t
 ## Installation
 
 ```bash
-npm install crewdle
+npm install @crewdle/web-sdk
 ```
 
 ## Usage
