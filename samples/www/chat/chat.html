@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crewdle Chat App</title>
     <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="/scripts/chat.js"></script>
 </head>
 <body>
@@ -23,15 +24,31 @@
       <div class="messages" id="chat">
       </div>
       <div class="form" id="controls">
-        <button type="button" class="button label-button" id="sidebar-toggle" onclick="Crewdle.toggleUsers()">Toggle user list</button>
-        <label for="file" class="button label-button">Attach</label>
+        <label for="file" class="button label-button"><i class="fas fa-paperclip"></i></label>
         <input type="file" id="file" style="display: none;" onchange="Crewdle.sendFile(event)">
         <input type="text" class="input" id="message" placeholder="Type a message..." onkeypress="Crewdle.input(event)">
-        <button type="button" class="button" id="send" onclick="Crewdle.send()">Send</button>
+        <button type="button" class="button" id="send" onclick="Crewdle.send()"><i class="fas fa-paper-plane"></i></button>
       </div>
     </div>
   </div>
     <script>
+      document.addEventListener('click', function(e) {
+        const allMessageActions = document.querySelectorAll('.message-actions');
+        const isEllipsisButton = e.target.classList.contains('ellipsis-button');
+
+        if (!isEllipsisButton) {
+          allMessageActions.forEach(action => {
+            action.style.display = 'none';
+          });
+        }
+
+        if (isEllipsisButton) {
+          const messageActions = e.target.nextElementSibling;
+          const isVisible = messageActions.style.display === 'flex';
+          messageActions.style.display = isVisible ? 'none' : 'flex';
+        }
+      });
+
       const queryParams = new URLSearchParams(window.location.search);
       const channelId = queryParams.get('cluster');
       const userId = queryParams.get('user');

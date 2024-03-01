@@ -2,27 +2,46 @@
 <html>
 
 <head>
-  <title>Crewdle SamplesSDK Test</title>
+  <meta charset="UTF-8">
+  <title>Crewdle Mist Samples</title>
+  <link rel="stylesheet" href="landing.css">
+  <link rel="shortcut icon" href="/favicon.ico"/>
   <script src="/scripts/index.js"></script>
-  <style>
-    body {
-      /* dark-mode */
-      background-color: #1a1a1a;
-      color: #fff;
-    }
-  </style>
 </head>
-
 <body>
-  <h1>Crewdle Samples</h1>
-
-  <a href="/chat">Chat</a>
-
-  </body>
-
-<script>
-  window.onload = async function () {
-    Crewdle.run();
-  };
-</script>
+  <div class="container">
+    <div class="intro">
+          <h2>Crewdle Samples</h2>
+          <p class="intro__description">
+            Explore our collection of interactive samples. You can also access our guides, API references and GitHub repository to learn more about the Crewdle Mist Computing Platform.
+          </p>
+          <button class="intro__button" onclick="window.location.href='https://guides.crewdle.com';">Guides</button>
+          <button class="intro__button" onclick="window.location.href='https://docs.crewdle.com';">API references</button>
+          <button class="intro__button" onclick="window.location.href='https://github.com/Crewdle/web-sdk';">GitHub repository</button>
+      </div>
+      <div class="sample">
+          <h2>Chat Sample</h2>
+          <p class="sample__description">
+            Play around with a chat app sample that uses the Crewdle Key Value Database to store messages and users as well as the Crewdle Object Store to store files.
+          </p>
+          <button class="sample__button" onclick="window.location.href='/login?sample=chat';">Go to Chat</button>
+      </div>
+      <div class="sample">
+          <h2>Monitoring Console Sample</h2>
+          <p class="sample__description">
+            Visualize the Crewdle Pub/Sub Topic in use with a monitoring console sample that displays CPU, Memory, and Disk usage. Each component is simulated as a node in the cluster transfering data through the Pub/Sub.
+          </p>
+          <button class="sample__button" onclick="window.location.href='/login?sample=monitoring';">Go to Console</button>
+      </div>
+      <div class="sample">
+        <h2>Guides Sample</h2>
+        <p class="sample__description">
+          Access the smaller samples to learn more about the Crewdle Mist Computing Platform and its underlying services.
+        </p>
+        <button class="sample__button" onclick="window.location.href='https://github.com/Crewdle/web-sdk/tree/main/samples/pubsub';">Go to Pub/Sub</button>
+        <button class="sample__button" onclick="window.location.href='https://github.com/Crewdle/web-sdk/tree/main/samples/keyValueDatabase';">Go to Key Value Database</button>
+        <button class="sample__button" onclick="window.location.href='https://github.com/Crewdle/web-sdk/tree/main/samples/objectStore';">Go to Object Store</button>
+    </div>
+  </div>
+</body>
 </html>

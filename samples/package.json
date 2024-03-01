@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode=development"
+    "build": "webpack --mode=development",
+    "build-prd": "webpack --mode=production"
   },
   "author": "Crewdle",
   "license": "ISC",
   "dependencies": {
-    "crewdle": "https://github.com/Crewdle/web-sdk.git"
+    "crewdle": "https://github.com/Crewdle/web-sdk.git",
+    "d3": "^7.8.5"
   },
   "devDependencies": {
+    "@types/d3": "^7.4.3",
     "firebase": "^10.8.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",

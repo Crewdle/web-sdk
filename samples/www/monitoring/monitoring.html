@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crewdle Monitoring Console</title>
+    <link rel="stylesheet" href="monitoring.css">
+    <script src="/scripts/monitoring.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Sample Monitoring Console</h1>
+    </header>
+    <div class="layout">
+        <div id="tabs" class="tabs">
+            <button class="tabs__link" onclick="Crewdle.changeTab('cpu')">CPU</button>
+            <button class="tabs__link" onclick="Crewdle.changeTab('memory')">Memory</button>
+            <button class="tabs__link" onclick="Crewdle.changeTab('disk')">Disk</button>
+        </div>
+        <div id="console" class="console">
+      <div id="cpu" class="tabs__content">
+        <div id="cpu-chart"></div>
+        <div id="cpu-temperature">CPU Temperature: <span id="cpu-temp-value">N/A</span>°C</div>
+        <div id="core-frequencies">
+          <p>Core Frequencies:</p>
+          <ul>
+            <li>Core 1: <span id="core1-freq">N/A</span> MHz</li>
+            <li>Core 2: <span id="core2-freq">N/A</span> MHz</li>
+            <li>Core 3: <span id="core3-freq">N/A</span> MHz</li>
+            <li>Core 4: <span id="core4-freq">N/A</span> MHz</li>
+          </ul>
+        </div>
+      </div>
+      <div id="memory" class="tabs__content" style="display:none;">
+        <div id="memory-chart"></div>
+        <div id="mem-total">RAM Total Space: <span id="mem-total-value">N/A</span>GB</div>
+        <div id="mem-free">RAM Space Remaining <span id="mem-free-value">N/A</span>GB</div>
+      </div>
+      <div id="disk" class="tabs__content" style="display:none;">
+        <div id="disk-chart"></div>
+        <div id="disk-total">Disk Total Space: <span id="disk-total-value">N/A</span>GB</div>
+        <div id="disk-free">Disk Space Remaining <span id="disk-free-value">N/A</span>GB</div>
+      </div>
+  </div>
+  <script>
+    const queryParams = new URLSearchParams(window.location.search);
+    const clusterId = queryParams.get('cluster');
+    const userId = queryParams.get('user');
+
+    if (!clusterId || !userId) {
+      throw new Error('Missing clusterId or userId query params');
+    }
+
+    window.onload = async function () {
+      Crewdle.start(clusterId, userId);
+      Crewdle.changeTab('cpu');
+    };
+  </script>
+</body>
+</html>

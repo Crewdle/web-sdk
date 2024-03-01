@@ -7,6 +7,7 @@
 
 // SDK and Interface Imports
 import { PayloadAction, IObjectStoreBucket, IDatabaseEvent, IDatabaseTable, IValueType, QueryBuilder, SDK, LayoutBuilder, DatabaseEvent } from 'crewdle';
+import { vendorId, accessToken } from '../credentials';
 
 const KeyValueDatabase = {
   timestamp: () => Date.now(),
@@ -14,10 +15,6 @@ const KeyValueDatabase = {
 
 // Helpers
 import { generateMessageHTML, IFile, readFile, renderTextMessage, updateUserList, User } from './helpers';
-
-// Input your vendor id and access token here
-const vendorId = 'CREWDLE_VENDOR_ID';
-const accessToken = `CREWDLE_ACCESS_TOKEN`;
 
 // This is used to define the structure of the chat message in the key-value database table
 interface IChatMessage extends IValueType {
@@ -106,6 +103,7 @@ export async function start(clusterId: string, userIdStart: string) {
     chatTable.subscribe(({ action, value: { id, senderId, message, timestamp, file } }) => {
       if (action === 'update' || action === 'delete') {
         if (action === 'delete') {
+          document.getElementById(id)?.closest('.message-container')?.remove();
           document.getElementById(id)?.remove();
           return;
         }
@@ -157,8 +155,7 @@ export async function send() {
     // Using set instead of add allows us to update the message instead of adding a new one
     chatTable.set(updateId, chatMessage);
     updateId = '';
-  }
-  else {
+  } else {
     const timestamp = await KeyValueDatabase.timestamp();
     // Add the message to the chat table with a generated unique key
     chatTable.add({
@@ -205,13 +202,6 @@ export async function sendFile(event: Event) {
   });
 }
 
-export function toggleUsers() {
-  const sidebar = document.getElementById('chat-sidebar') as HTMLDivElement;
-  const app = document.getElementById('chat-app') as HTMLDivElement;
-  sidebar.classList.toggle('collapsed');
-  app.classList.toggle('app-with-sidebar');
-}
-
 export async function editMessage(messageId: string) {
   updateId = messageId;
   // Get a message from the chat table using its key
@@ -228,8 +218,8 @@ export function deleteMessage(messageId: string) {
 }
 
 // Read a file and render it as a message
-async function renderFile(file: IFile, senderId: string) {
-  const reader = readFile(file, senderId, userId);
+async function renderFile(file: IFile, senderId: string, timestamp: number) {
+  const reader = readFile(file, senderId, userId, timestamp);
   // Get the file from the object store using its path
   const fileObject = await objectStore.get(file.path);
   reader.readAsDataURL(fileObject);
@@ -238,7 +228,7 @@ async function renderFile(file: IFile, senderId: string) {
 // Render a message as either a text message or a file
 function renderMessage(id: string, senderId: string, message: string, timestamp: number, file?: IFile) {
   if (file) {
-    return renderFile(file, senderId);
+    return renderFile(file, senderId, timestamp);
   }
 
   renderTextMessage(id, message, senderId, timestamp, userId);

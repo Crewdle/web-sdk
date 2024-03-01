@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'Inter';
+  src: url('samples/www/font/Inter.ttf');
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #18191A;
+  display: flex;
+  flex-direction: column;
+  color: #d3d5dd;
+}
+
+.header {
+  background: linear-gradient(90deg, #4C17CA 0%, #FF5322 61.13%);
+  text-align: center;
+  color: #fff;
+}
+
+.layout {
+  display: flex;
+  height: 90vh;
+}
+
+.tabs {
+  flex: 1;
+  background-color: #242526;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  color: #d3d5dd;
+}
+
+.tabs__link {
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  transition: background-color 0.3s;
+  color: #d3d5dd;
+}
+
+.tabs__link:hover {
+  background-color: #3c3c3c;
+  color: white;
+}
+
+.tabs__content {
+  display: none;
+  background-color: #18191A;
+  padding: 1rem;
+}
+
+.console {
+  color: #d3d5dd;
+  overflow-y: auto;
+}

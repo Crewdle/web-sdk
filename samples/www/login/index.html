@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join a Cluster</title>
+    <link rel="stylesheet" href="/login/login.css">
+</head>
+<body>
+    <div class="landing-container">
+        <div class="form-header">
+            <h2>Enter a cluster ID and a user ID to join a cluster</h2>
+        </div>
+        <form class="join-cluster-form" id="join-cluster-form">
+            <div class="form-group">
+                <label for="cluster-id">Cluster ID</label>
+                <input type="text" id="cluster-id" name="cluster" placeholder="Enter Cluster ID" required>
+            </div>
+            <div class="form-group">
+                <label for="user-name">User ID</label>
+                <input type="text" id="user-name" name="user" placeholder="Enter Your User Name" required>
+            </div>
+            <button type="submit" class="button join-button">Join Cluster</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('join-cluster-form').onsubmit = function(e) {
+            e.preventDefault();
+            const cluster = document.getElementById('cluster-id').value;
+            const userName = document.getElementById('user-name').value;
+            let url;
+            if (window.location.search.includes('sample=chat')) {
+                url = `../chat/chat?cluster=${encodeURIComponent(cluster)}&user=${encodeURIComponent(userName)}`;
+            } else if (window.location.search.includes('sample=monitoring')) {
+                url = `../monitoring/monitoring?cluster=${encodeURIComponent(cluster)}&user=${encodeURIComponent(userName)}`;
+            }
+            window.location.href = url;
+        };
+    </script>
+</body>
+</html>
