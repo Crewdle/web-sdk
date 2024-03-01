@@ -1,4 +1,4 @@
-import { ILoggingConnector, PayloadAction, SDK, StorageEventType } from 'crewdle';
+import { ILoggingConnector, PayloadAction, SDK, StorageEventType } from '@crewdle/web-sdk';
 
 const credentials = {
   id: 'crewdleUser',

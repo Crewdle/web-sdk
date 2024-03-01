@@ -1,4 +1,4 @@
-import { IValueType } from 'crewdle';
+import { IValueType } from '@crewdle/web-sdk';
 
 export interface IFile {
   name: string;

@@ -5,7 +5,7 @@
 // It serves as a part of the SDK integration layer.
 
 // SDK and Helpers Imports
-import { ContentType, SDK } from 'crewdle';
+import { ContentType, SDK } from '@crewdle/web-sdk';
 import { vendorId, accessToken } from '../credentials'
 import { ICpuData, IDiskData, IMemoryData, updateInfo } from './helpers';
 import { updateGraphData } from './graph';

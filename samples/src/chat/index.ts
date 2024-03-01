@@ -6,7 +6,7 @@
 // for query and schema building. It serves as a part of the SDK integration layer.
 
 // SDK and Interface Imports
-import { PayloadAction, IObjectStoreBucket, IDatabaseEvent, IDatabaseTable, IValueType, QueryBuilder, SDK, LayoutBuilder, DatabaseEvent } from 'crewdle';
+import { PayloadAction, IObjectStoreBucket, IDatabaseEvent, IDatabaseTable, IValueType, QueryBuilder, SDK, LayoutBuilder, DatabaseEvent } from '@crewdle/web-sdk';
 import { vendorId, accessToken } from '../credentials';
 
 const KeyValueDatabase = {

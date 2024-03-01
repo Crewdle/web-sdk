@@ -1,4 +1,4 @@
-import { ContentType, ILoggingConnector, SDK } from 'crewdle';
+import { ContentType, ILoggingConnector, SDK } from '@crewdle/web-sdk';
 
 const credentials = {
   id: 'crewdleUser',

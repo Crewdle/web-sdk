@@ -1,4 +1,4 @@
-import {  DatabaseEvent, ILoggingConnector, IValueType, LayoutBuilder, QueryBuilder, SDK } from 'crewdle';
+import {  DatabaseEvent, ILoggingConnector, IValueType, LayoutBuilder, QueryBuilder, SDK } from '@crewdle/web-sdk';
 
 const credentials = {
   id: 'crewdleUser',

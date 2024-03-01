@@ -2,7 +2,7 @@
 // The monitoring.ts file is the entry point for the monitoring component and the monitoringComponent.ts file is the actual component that is loaded into the iframes.
 // Functions used here are the same as in the monitoring.ts file.
 
-import { SDK } from 'crewdle';
+import { SDK } from '@crewdle/web-sdk';
 import { vendorId, accessToken } from '../credentials'
 import { generateData, updateData } from './helpers';
 
