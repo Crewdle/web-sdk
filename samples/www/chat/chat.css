@@ -31,8 +31,6 @@ body {
   color: #fff;
   overflow-y: auto;
   border-right: 1px solid #18191A;
-  border-top-left-radius: 0.625rem;
-  border-bottom-left-radius: 0.625rem;
 }
 
 .app-with-sidebar {
