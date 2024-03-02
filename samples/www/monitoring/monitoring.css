@@ -17,6 +17,12 @@ body {
   background: linear-gradient(90deg, #4C17CA 0%, #FF5322 61.13%);
   text-align: center;
   color: #fff;
+  padding: 0.5rem 1rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.25rem;
 }
 
 .layout {

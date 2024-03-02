@@ -23,8 +23,6 @@ body {
   flex-direction: column;
   max-width: 37.5rem;
   background-color: #2a2a2a;
-  border-top-right-radius: 0.625rem;
-  border-bottom-right-radius: 0.625rem;
 }
 
 .chat-sidebar {
@@ -79,8 +77,15 @@ body {
   text-align: left;
 }
 
+.header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
 .sidebar-header {
-  background: linear-gradient(90deg, #FF5322 0%, #4C17CA 61.13%);
+  background: #4C17CA;
+  align-items: start;
+  justify-content: start;
 }
 
 .messages {
@@ -109,6 +114,10 @@ body {
   box-shadow: 0 0.0625rem 0.0625rem rgba(0, 0, 0, 0.2);
   font-size: 1rem;
   color: #dcdcdc;
+}
+
+.message b {
+  margin-right: 0.5rem;
 }
 
 .message.incoming {
@@ -159,7 +168,7 @@ body {
 .edit-message-btn, .delete-message-btn {
   background-color: #18191A;
   padding: 0.3rem 1rem;
-  font-size: xx-small;
+  font-size: 0.8rem;
   width: 100%;
   height: 100%;
 }

@@ -22,6 +22,8 @@ body {
   padding-top: 0;
   padding-bottom: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .intro__description {
@@ -38,6 +40,7 @@ body {
   color: #d3d5dd; /* Consistent text color */
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
+  margin-right: 1rem;
 }
 
 .button:hover, .intro__button:hover, .sample__button:hover {
