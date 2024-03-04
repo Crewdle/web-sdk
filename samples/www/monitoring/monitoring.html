@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Monitoring Console Sample</title>
-    <meta name="description" content="Visualize the Crewdle Mist Pub/Sub in use with a monitoring console sample that displays CPU, Memory, and Disk usage. Each component is simulated as a node in the cluster transfering data through the Pub/Sub." />
-    <link rel="stylesheet" href="monitoring.css">
-    <script src="/scripts/monitoring.js" defer></script>
+  <meta charset="UTF-8">
+  <title>Monitoring Console Sample</title>
+  <meta name="description" content="Visualize the Crewdle Mist Pub/Sub in use with a monitoring console sample that displays CPU, Memory, and Disk usage. Each component is simulated as a node in the cluster transfering data through the Pub/Sub." />
+  <link rel="stylesheet" href="monitoring.css">
+  <script>
+    !function(){var i="analytics",analytics=window[i]=window[i]||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","screen","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware","register"];analytics.factory=function(e){return function(){if(window[i].initialized)return window[i][e].apply(window[i],arguments);var n=Array.prototype.slice.call(arguments);if(["track","screen","alias","group","page","identify"].indexOf(e)>-1){var c=document.querySelector("link[rel='canonical']");n.push({__t:"bpc",c:c&&c.getAttribute("href")||void 0,p:location.pathname,u:location.href,s:location.search,t:document.title,r:document.referrer})}n.unshift(e);analytics.push(n);return analytics}};for(var n=0;n<analytics.methods.length;n++){var key=analytics.methods[n];analytics[key]=analytics.factory(key)}analytics.load=function(key,n){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.setAttribute("data-global-segment-analytics-key",i);t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r);analytics._loadOptions=n};analytics._writeKey="qyeBjf7z01wLbDNXPB3j6I1qAzi30YoC";;analytics.SNIPPET_VERSION="5.2.0";
+    analytics.load("qyeBjf7z01wLbDNXPB3j6I1qAzi30YoC");
+    analytics.page();
+    }}();
+  </script>
+  <script src="/scripts/monitoring.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <h1>Monitoring Console Sample</h1>
-    </header>
-    <div class="layout">
-        <div id="tabs" class="tabs">
-            <button class="tabs__link" onclick="Crewdle.changeTab('cpu')">CPU</button>
-            <button class="tabs__link" onclick="Crewdle.changeTab('memory')">Memory</button>
-            <button class="tabs__link" onclick="Crewdle.changeTab('disk')">Disk</button>
-        </div>
-        <div id="console" class="console">
-      <div id="cpu" class="tabs__content">
-        <div id="cpu-chart"></div>
-        <div id="cpu-temperature">CPU Temperature: <span id="cpu-temp-value">N/A</span>°C</div>
-        <div id="core-frequencies">
-          <p>Core Frequencies:</p>
-          <ul>
-            <li>Core 1: <span id="core1-freq">N/A</span> MHz</li>
-            <li>Core 2: <span id="core2-freq">N/A</span> MHz</li>
-            <li>Core 3: <span id="core3-freq">N/A</span> MHz</li>
-            <li>Core 4: <span id="core4-freq">N/A</span> MHz</li>
-          </ul>
-        </div>
+  <header class="header">
+    <h1>Monitoring Console Sample</h1>
+  </header>
+  <div class="layout">
+    <div id="tabs" class="tabs">
+      <button class="tabs__link" onclick="Crewdle.changeTab('cpu')">CPU</button>
+      <button class="tabs__link" onclick="Crewdle.changeTab('memory')">Memory</button>
+      <button class="tabs__link" onclick="Crewdle.changeTab('disk')">Disk</button>
+    </div>
+    <div id="console" class="console">
+    <div id="cpu" class="tabs__content">
+      <div id="cpu-chart"></div>
+      <div id="cpu-temperature">CPU Temperature: <span id="cpu-temp-value">N/A</span>°C</div>
+      <div id="core-frequencies">
+        <p>Core Frequencies:</p>
+        <ul>
+          <li>Core 1: <span id="core1-freq">N/A</span> MHz</li>
+          <li>Core 2: <span id="core2-freq">N/A</span> MHz</li>
+          <li>Core 3: <span id="core3-freq">N/A</span> MHz</li>
+          <li>Core 4: <span id="core4-freq">N/A</span> MHz</li>
+        </ul>
       </div>
-      <div id="memory" class="tabs__content" style="display:none;">
-        <div id="memory-chart"></div>
-        <div id="mem-total">RAM Total Space: <span id="mem-total-value">N/A</span>GB</div>
-        <div id="mem-free">RAM Space Remaining <span id="mem-free-value">N/A</span>GB</div>
-      </div>
-      <div id="disk" class="tabs__content" style="display:none;">
-        <div id="disk-chart"></div>
-        <div id="disk-total">Disk Total Space: <span id="disk-total-value">N/A</span>GB</div>
-        <div id="disk-free">Disk Space Remaining <span id="disk-free-value">N/A</span>GB</div>
-      </div>
+    </div>
+    <div id="memory" class="tabs__content" style="display:none;">
+      <div id="memory-chart"></div>
+      <div id="mem-total">RAM Total Space: <span id="mem-total-value">N/A</span>GB</div>
+      <div id="mem-free">RAM Space Remaining <span id="mem-free-value">N/A</span>GB</div>
+    </div>
+    <div id="disk" class="tabs__content" style="display:none;">
+      <div id="disk-chart"></div>
+      <div id="disk-total">Disk Total Space: <span id="disk-total-value">N/A</span>GB</div>
+      <div id="disk-free">Disk Space Remaining <span id="disk-free-value">N/A</span>GB</div>
+    </div>
   </div>
   <script>
     const queryParams = new URLSearchParams(window.location.search);
