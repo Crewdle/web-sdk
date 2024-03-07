@@ -1,6 +1,6 @@
 {
   "name": "@crewdle/web-sdk",
-  "version": "0.1.0-beta.2",
+  "version": "0.1.0-beta.3",
   "description": "The Web SDK to integrate the Crewdle Mist Computing Platform",
   "main": "dist/sdk.js",
   "types": "dist/types/index.d.ts",
@@ -22,5 +22,8 @@
     "firebase": "^10.8.0",
     "uuid": "^9.0.1",
     "webrtc-adapter": "^8.2.3"
-  }
+  },
+  "files": [
+    "dist/"
+  ]
 }
