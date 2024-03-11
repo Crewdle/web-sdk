@@ -1,6 +1,6 @@
 {
   "name": "@crewdle/web-sdk",
-  "version": "0.1.0-beta.3",
+  "version": "0.1.1-beta.1",
   "description": "The Web SDK to integrate the Crewdle Mist Computing Platform",
   "main": "dist/sdk.js",
   "types": "dist/types/index.d.ts",

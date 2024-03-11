@@ -126,5 +126,10 @@ export declare enum SDKClientErrorCodes {
  */
 export declare class SDKClientError extends Error {
     code: SDKClientErrorCodes;
+    /**
+     * Throws an error with the given code and message.
+     * @param code The error code
+     * @param error The error message
+     */
     constructor(code: SDKClientErrorCodes, error: string);
 }

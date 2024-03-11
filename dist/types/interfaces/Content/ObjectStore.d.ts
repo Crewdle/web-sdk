@@ -11,7 +11,7 @@ export declare enum ObjectKind {
     /**
      * The folder kind.
      */
-    Folder = "directory"
+    Folder = "folder"
 }
 /**
  * The file descriptor interface.

@@ -18,6 +18,8 @@ export { IAuthUser, ILocalUser } from './interfaces/Node/LocalUser';
 export { IUser } from './interfaces/Node/User';
 export { ICredentials } from './interfaces/SDK/Credentials';
 export { ILoggingConnector, LoggingConnectorEvent } from './interfaces/SDK/LoggingConnector';
+export { IObjectStoreConnector, IFileHandle, IObjectHandle, IFolderHandle, ObjectStoreConnectorConstructor } from './interfaces/SDK/ObjectStoreConnector';
+export { IKeyValueDatabaseConnector, IKeyValueDatabaseTableConnector, KeyValueDatabaseConnectorConstructor, IKeyValueDatabaseMigrationHandle } from './interfaces/SDK/KeyValueDatabaseConnector';
 export { ISDK } from './interfaces/SDK/SDK';
 export { ISDKOptions } from './interfaces/SDK/SDKOptions';
 export { SDKClientErrorCodes } from './errors/SDKClientError';

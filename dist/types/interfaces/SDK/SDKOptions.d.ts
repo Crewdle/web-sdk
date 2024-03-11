@@ -1,4 +1,6 @@
-import { ILoggingConnector } from '../SDK/LoggingConnector';
+import { KeyValueDatabaseConnectorConstructor } from './KeyValueDatabaseConnector';
+import { ILoggingConnector } from './LoggingConnector';
+import { ObjectStoreConnectorConstructor } from './ObjectStoreConnector';
 /**
  * Options to configure the SDK.
  * @category Core
@@ -16,6 +18,16 @@ export interface ISDKOptions {
      * The custom logging connector to use for logging events.
      */
     loggingConnectors?: ILoggingConnector[];
+    /**
+     * The custom object store connector to use for storing objects.
+     * If not provided, the default object store connector is OPFS.
+     */
+    objectStoreConnector?: ObjectStoreConnectorConstructor;
+    /**
+     * The custom key-value database connector to use for storing key-value pairs.
+     * If not provided, the default key-value database connector is IndexedDB.
+     */
+    keyValueDatabaseConnector?: KeyValueDatabaseConnectorConstructor;
     /**
      * The maximum number of outgoing subscriptions.
      */
