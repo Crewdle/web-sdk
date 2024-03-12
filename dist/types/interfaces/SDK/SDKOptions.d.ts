@@ -1,6 +1,7 @@
 import { KeyValueDatabaseConnectorConstructor } from './KeyValueDatabaseConnector';
 import { ILoggingConnector } from './LoggingConnector';
 import { ObjectStoreConnectorConstructor } from './ObjectStoreConnector';
+import { PeerConnectionConnectorConstructor } from './PeerConnectionConnector';
 /**
  * Options to configure the SDK.
  * @category Core
@@ -28,6 +29,11 @@ export interface ISDKOptions {
      * If not provided, the default key-value database connector is IndexedDB.
      */
     keyValueDatabaseConnector?: KeyValueDatabaseConnectorConstructor;
+    /**
+     * The custom peer connection connector to use for creating peer connections.
+     * If not provided, the default peer connection connector is WebRTC in browser.
+     */
+    peerConnectionConnector?: PeerConnectionConnectorConstructor;
     /**
      * The maximum number of outgoing subscriptions.
      */
