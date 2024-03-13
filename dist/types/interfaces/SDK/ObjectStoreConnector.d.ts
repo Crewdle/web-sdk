@@ -56,7 +56,7 @@ export interface IFolderHandle {
  * The object store connector constructor type.
  * @category Object Storage
  */
-export type ObjectStoreConnectorConstructor = new (storeKey: string, label: string) => IObjectStoreConnector;
+export type ObjectStoreConnectorConstructor = new (storeKey: string) => IObjectStoreConnector;
 /**
  * The object store connector interface.
  * @category Object Storage

@@ -17,13 +17,13 @@ export interface IPeerConnectionConnector {
      */
     readonly connectionState: string;
     /**
-     * The current handshake state.
-     */
-    readonly handshakeState: string;
-    /**
      * The current gathering state.
      */
     readonly gatheringState: string;
+    /**
+     * The current handshake state.
+     */
+    readonly handshakeState: string;
     /**
      * The current signaling state.
      */
