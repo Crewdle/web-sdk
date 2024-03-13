@@ -6,7 +6,7 @@
 // for query and schema building. It serves as a part of the SDK integration layer.
 
 // SDK and Interface Imports
-import { PayloadAction, IObjectStoreBucket, IDatabaseEvent, IDatabaseTable, IValueType, QueryBuilder, SDK, LayoutBuilder, DatabaseEvent } from '@crewdle/web-sdk';
+import { PayloadAction, IObjectStoreBucket, IDatabaseEvent, IDatabaseTable, IValueType, QueryBuilder, SDK, LayoutBuilder, DatabaseEvent, SDKClientErrorCodes } from '@crewdle/web-sdk';
 import { vendorId, accessToken } from '../credentials';
 
 const KeyValueDatabase = {
@@ -221,8 +221,16 @@ export function deleteMessage(messageId: string) {
 async function renderFile(file: IFile, senderId: string, timestamp: number) {
   const reader = readFile(file, senderId, userId, timestamp);
   // Get the file from the object store using its path
-  const fileObject = await objectStore.get(file.path);
-  reader.readAsDataURL(fileObject);
+  try {
+    const fileObject = await objectStore.get(file.path);
+    reader.readAsDataURL(fileObject);
+  } catch (error: any) {
+    if (error.code === SDKClientErrorCodes.ObjectStoreNotInSync) {
+      setTimeout(() => {
+        renderFile(file, senderId, timestamp);
+      }, 1000);
+    }
+  }
 }
 
 // Render a message as either a text message or a file
