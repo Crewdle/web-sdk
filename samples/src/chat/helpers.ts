@@ -1,14 +1,11 @@
 import { IValueType } from 'crewdle';
 
+import { send, User } from './index';
+
 export interface IFile {
   name: string;
   type: string;
   path: string;
-}
-
-export interface User extends IValueType{
-  senderId: string;
-  isOnline: boolean;
 }
 
 export function readFile(file: IFile, senderId: string, userId: string, timestamp: number) {
@@ -95,6 +92,48 @@ export function updateUserList(users: User[]) {
   });
 }
 
+export function removeMessage(id: string) {
+  document.getElementById(id)?.closest('.message-container')?.remove();
+  document.getElementById(id)?.remove();
+}
+
+export function updateMessage(id: string, message: string, senderId: string, timestamp: number) {
+  const messageDiv = document.getElementById(id);
+  messageDiv!.innerHTML = generateMessageHTML(message, senderId, id, new Date(timestamp), true);
+}
+
+export function getMessage() {
+  const input = document.getElementById('message') as HTMLInputElement;
+  const message = input.value;
+  return message
+}
+
+export function clearMessage() {
+  const input = document.getElementById('message') as HTMLInputElement;
+  input.value = '';
+}
+
+export function setInputListener() {
+  const messageInput = document.getElementById('message');
+  if (messageInput) {
+    messageInput.addEventListener('keypress', (event) => {
+      input(event);
+    })
+  }
+}
+
+export function editText(initialMessage: string) {
+  const input = document.getElementById('message') as HTMLInputElement;
+  input.setRangeText(initialMessage);
+  input.selectionStart = input.selectionEnd = input.value.length;
+  input.focus();
+}
+
+function input(event: KeyboardEvent) {
+  if (event.key === 'Enter') {
+    send();
+  }
+}
 
 function autoScrollDown () {
   setTimeout(() => {
