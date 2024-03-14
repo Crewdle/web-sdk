@@ -84,6 +84,10 @@ export declare enum SDKClientErrorCodes {
      */
     LocalMediaStreamAlreadyExists = "local-media-stream-already-exists",
     /**
+     * The local media stream needs an audio context.
+     */
+    LocalMediaStreamNoAudioContext = "local-media-stream-no-audio-context",
+    /**
      * The pub/sub topic already exists.
      */
     PubSubTopicAlreadyExists = "pub-sub-topic-already-exists",

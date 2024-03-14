@@ -18,9 +18,10 @@ export declare class SDK implements ISDK {
      * @param vendorId The ID of the vendor to access the SDK.
      * @param accessToken The access token to validate the access to the SDK.
      * @param options The options to configure the SDK.
+     * @param secretKey The secret key to use for the SDK when calling from a server.
      * @returns An instance of the SDK.
      */
-    static getInstance(vendorId: string, accessToken: string, options?: ISDKOptions): Promise<ISDK>;
+    static getInstance(vendorId: string, accessToken: string, options?: ISDKOptions, secretKey?: string): Promise<ISDK>;
     /**
      * Get the current estimated server timestamp.
      */
