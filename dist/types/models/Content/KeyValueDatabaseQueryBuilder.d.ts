@@ -1,9 +1,9 @@
-import { IDatabaseTableQuery, IDatabaseTableQueryWhereValue, IDatabaseTableQueryWhereValues, IDatabaseTableQueryWhereBetween } from '../../interfaces/Content/KeyValueDatabase';
+import { IDatabaseTableQuery, IDatabaseTableQueryWhereValue, IDatabaseTableQueryWhereValues, IDatabaseTableQueryWhereBetween, IQueryBuilder } from '@crewdle/web-sdk-types';
 /**
  * A QueryBuilder helper for building queries for the {@link IDatabaseTable}.
  * @category Key-Value Database
  */
-export declare class QueryBuilder {
+export declare class QueryBuilder implements IQueryBuilder {
     /**
      * @ignore
      */

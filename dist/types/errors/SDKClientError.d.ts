@@ -44,7 +44,7 @@ export declare enum SDKClientErrorCodes {
      */
     KeyValueDatabaseAlreadyExists = "key-value-database-already-exists",
     /**
-     * The key-value database already exists.
+     * The key-value database does not exists.
      */
     KeyValueDatabaseDoesNotExist = "key-value-database-does-not-exist",
     /**
@@ -120,9 +120,17 @@ export declare enum SDKClientErrorCodes {
      */
     SubscriptionRequestInProgress = "subscription-request-in-progress",
     /**
-     * The user is not authenticated.
+     * The node is not authenticated.
      */
-    UserNotAuthenticated = "user-not-authenticated"
+    NodeNotAuthenticated = "node-not-authenticated",
+    /**
+     * The node type is invalid.
+     */
+    NodeInvalidType = "node-invalid-type",
+    /**
+     * The node type is not supported.
+     */
+    NodeTypeNotSupported = "node-type-not-supported"
 }
 /**
  * SDK Client Error - Any error that is thrown by the SDK will be an instance of this class.

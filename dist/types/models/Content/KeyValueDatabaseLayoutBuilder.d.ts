@@ -1,9 +1,9 @@
-import { IDatabaseLayout, ITableLayout } from '../../interfaces/Content/KeyValueDatabase';
+import { IDatabaseLayout, IDatabaseTableLayout, ILayoutBuilder, ITableBuilder } from '@crewdle/web-sdk-types';
 /**
  * A layout builder for the {@link IKeyValueDatabase}.
  * @category Key-Value Database
  */
-export declare class LayoutBuilder {
+export declare class LayoutBuilder implements ILayoutBuilder {
     private layout;
     private constructor();
     /**
@@ -34,12 +34,12 @@ export declare class LayoutBuilder {
  * A table builder for the {@link IKeyValueDatabase}.
  * @category Key-Value Database
  */
-export declare class TableBuilder {
+export declare class TableBuilder implements ITableBuilder {
     private tableLayout;
     /**
      * @ignore
      */
-    constructor(tableLayout: ITableLayout);
+    constructor(tableLayout: IDatabaseTableLayout);
     /**
      * Adds an index to the table.
      * @param name The name of the index.

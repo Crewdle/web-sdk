@@ -1,8 +1,4 @@
-import { ICluster } from '../../interfaces/Cluster/Cluster';
-import { IAuthUser } from '../../interfaces/Node/LocalUser';
-import { ICredentials } from '../../interfaces/SDK/Credentials';
-import { ISDK } from '../../interfaces/SDK/SDK';
-import { ISDKOptions } from '../../interfaces/SDK/SDKOptions';
+import { ICluster, IAuthAgent, IAuthUser, IAgentCredentials, IUserCredentials, ISDK, ISDKOptions } from '@crewdle/web-sdk-types';
 /**
  * The SDK class.
  * This is the entry point for the Crewdle SDK.
@@ -31,12 +27,18 @@ export declare class SDK implements ISDK {
      * @param credentials The credentials to authenticate the user with.
      * @returns A promise that resolves with the authenticated user.
      */
-    authenticateUser(credentials: ICredentials): Promise<IAuthUser>;
+    authenticateUser(credentials: IUserCredentials): Promise<IAuthUser>;
+    /**
+     * Authenticate an agent.
+     * @param credentials The credentials to authenticate the agent with.
+     * @returns A promise that resolves with the authenticated agent.
+     */
+    authenticateAgent(credentials: IAgentCredentials): Promise<IAuthAgent>;
     /**
      * Join a cluster.
      * @param clusterId The ID of the cluster to join.
      * @returns A promise that resolves with the cluster.
-     * @throws {@link SDKClientErrorCodes.UserNotAuthenticated} if the user is not authenticated.
+     * @throws {@link SDKClientErrorCodes.NodeNotAuthenticated} if the node is not authenticated.
      */
     joinCluster(clusterId: string): Promise<ICluster>;
 }
