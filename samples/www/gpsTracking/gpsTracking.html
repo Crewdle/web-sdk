@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time GPS Movement</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="gpsTracking.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="/scripts/gpsTracking.js" defer></script>
+</head>
+<body>
+    <div class="header">Real-Time GPS Movement</div>
+    <div id="map" class="map"></div>
+  <script>
+    const queryParams = new URLSearchParams(window.location.search);
+    const clusterId = queryParams.get('cluster');
+    const userId = queryParams.get('user');
+
+    if (!clusterId || !userId) {
+      throw new Error('Missing clusterId or userId query params');
+    }
+
+    window.onload = async function () {
+      Crewdle.start(clusterId, userId);
+    };
+  </script>
+</body>
+</html>

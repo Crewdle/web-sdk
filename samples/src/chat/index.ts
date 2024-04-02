@@ -16,6 +16,7 @@ const KeyValueDatabase = {
 
 // Helpers
 import { generateMessageHTML, IFile, readFile, renderTextMessage, updateUserList, User } from './helpers';
+import { getRxDBDatabaseConnector } from '@crewdle/mist-connector-rxdb';
 
 // This is used to define the structure of the chat message in the key-value database table
 interface IChatMessage extends IValueType {
@@ -41,6 +42,7 @@ export async function start(clusterId: string, userIdStart: string) {
   // Create a new SDK instance with a minimum of 3 connections per user
   const sdk = await SDK.getInstance(vendorId, accessToken, {
     minConnections: 3,
+    keyValueDatabaseConnector: getRxDBDatabaseConnector(),
   });
 
   // Authenticate the user with specific credentials
