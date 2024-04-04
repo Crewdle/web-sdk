@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "firebase use stg && firebase serve -p 8100",
+    "full-build-tracking": "python3 src/gpsTracking/coordinatesRetrieval.py && npm run build",
     "build": "webpack --mode=development",
     "build-prd": "webpack --mode=production"
   },
@@ -14,7 +15,8 @@
   "dependencies": {
     "@crewdle/web-sdk": "^0.2.2",
     "d3": "^7.8.5",
-    "leaflet": "^1.9.4"
+    "leaflet": "^1.9.4",
+    "leaflet-geometryutil": "^0.10.3"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",

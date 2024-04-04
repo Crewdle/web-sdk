@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Real-Time GPS Movement</title>
+    <title>Commercial GPS Tracking Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="gpsTracking.css" />
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="/scripts/gpsTracking.js" defer></script>
 </head>
 <body>
-    <div class="header">Real-Time GPS Movement</div>
-    <div id="map" class="map"></div>
+    <div class="header">GPS Tracking Map Overview</div>
+    <div id="map" class="map commercial-map"></div>
   <script>
     const queryParams = new URLSearchParams(window.location.search);
     const clusterId = queryParams.get('cluster');
@@ -20,7 +19,7 @@
     }
 
     window.onload = async function () {
-      Crewdle.start(clusterId, userId);
+      Crewdle.start(clusterId, userId, 'commercial-map');
     };
   </script>
 </body>

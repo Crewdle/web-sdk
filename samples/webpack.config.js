@@ -7,7 +7,7 @@ module.exports = {
     monitoring: './src/monitoring/index.ts',
     monitoringComponent: './src/monitoring/component.ts',
     gpsTracking: './src/gpsTracking/index.ts',
-    gpsTrackingComponent: './src/gpsTracking/component.ts',
+    route: './src/gpsTracking/route.ts',
   },
 
   module: {
