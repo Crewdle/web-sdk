@@ -8,7 +8,10 @@
 </head>
 <body>
     <div class="header">GPS Tracking Map Overview</div>
-    <div id="map" class="map commercial-map"></div>
+    <div class="content">
+      <div id="map" class="map commercial-map"></div>
+      <div id="routeDetails" class="route-details"></div>
+    </div>
   <script>
     const queryParams = new URLSearchParams(window.location.search);
     const clusterId = queryParams.get('cluster');

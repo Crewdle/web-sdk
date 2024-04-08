@@ -65,6 +65,7 @@ export async function start(clusterId: string, userId: string) {
     if (currentIndex >= usedCoordinates.length) {
       worker.terminate();
       pubsub.publish({ coordinate: usedCoordinates[usedCoordinates.length - 1], routeDetails: {
+        length: usedRoute.length,
         start: usedRoute.start,
         end: usedRoute.end,
         percentage: 100,
@@ -77,6 +78,7 @@ export async function start(clusterId: string, userId: string) {
     percentage = Math.abs(currentLength / fullLength) * 100;
 
     pubsub.publish({ coordinate: data, routeDetails: {
+      length: usedRoute.length,
       start: usedRoute.start,
       end: usedRoute.end,
       percentage: percentage,

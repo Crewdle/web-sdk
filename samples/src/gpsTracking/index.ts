@@ -8,7 +8,7 @@
 import { ContentType } from '@crewdle/web-sdk-types';
 import { SDK } from '@crewdle/web-sdk';
 import { vendorId, accessToken } from '../credentials'
-import { addIframe, initializeMap, IRouteDetails, updateMarkerPosition } from './helpers';
+import { addIframe, displayRouteDetails, initializeMap, IRouteDetails, updateMarkerPosition } from './helpers';
 import { LatLngExpression } from 'leaflet';
 
 // This is used to define the structure of the messages that can pass through the Pub/Sub
@@ -56,6 +56,7 @@ export async function start(clusterId: string, userIdStart: string, mapType: str
     }
 
     updateMarkerPosition(sourceId, content.coordinate as LatLngExpression, content.routeDetails, follow);
+    displayRouteDetails(content.routeDetails, sourceId, mapType);
   });
 
   let routeNb = 3;
