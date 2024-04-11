@@ -6,54 +6,42 @@ body, html {
   display: flex;
   flex-direction: column;
 }
-
 .header {
   background: linear-gradient(90deg, #4C17CA 0%, #FF5322 61.13%);
   color: #fff;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   width: 100%;
 }
 
 .content {
   display: flex;
-  margin: 10px;
   flex-direction: column;
 }
 
 .personnal-content {
   width: 50vh;
   align-self: center;
+  border-radius: 10px;
 }
 
 .map {
-  margin: 5px;
-  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .route-details {
-  margin: 5px;
-  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .route-container {
   border: 1px solid #ccc;
   padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
   background-color: #f9f9f9;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 10px;
-}
-
-.route-container:last-of-type {
-  margin-bottom: 0;
+  gap: 20px;
 }
 
 .commercial-map {
@@ -61,7 +49,6 @@ body, html {
 }
 
 .user-map {
-  border-radius: 8px;
   margin: 5px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   overflow: hidden;
@@ -73,11 +60,8 @@ body, html {
 
 .tracking-info {
   background-color: #fff;
-  border-radius: 8px;
   box-shadow: 0 -2px 4px rgba(0,0,0,0.2);
   margin: 5px;
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
   margin-top: 0px;
 }
 
@@ -85,4 +69,15 @@ body, html {
   width: 100%;
   height: 400px;
   display: block;
+}
+
+.custom-icon img {
+  pointer-events: none;
+}
+
+
+.custom-icon {
+  background: none !important;
+  border: none !important;
+  pointer-events: all;
 }

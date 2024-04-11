@@ -4,6 +4,12 @@ import GeometryUtil from 'leaflet-geometryutil';
 let map: L.Map;
 let markers: { [sourceId: string]: L.Marker } = {};
 const SPEED_KMH = 25;
+const carIcon = L.icon({
+  iconUrl: 'car.png',
+  iconSize: [19, 27],
+  iconAnchor: [9.5, 13.5],
+  popupAnchor: [-1.5, -38]
+});
 
 export interface IRouteDetails {
   length: number;
@@ -20,19 +26,28 @@ export function initializeMap(defaultPosition: LatLngExpression) {
   }).addTo(map);
 }
 
-export function updateMarkerPosition(sourceId: string, newPosition: LatLngExpression, routeDetails: IRouteDetails, follow: boolean) {
+export function updateMarkerPosition(sourceId: string, newPosition: LatLngExpression, oldPosition: number[], routeDetails: IRouteDetails, follow: boolean) {
+  const bearing = calculateBearing(oldPosition, newPosition as number[]);
+
+  const rotatedCarIcon = L.divIcon({
+    html: `<img src="car.png" style="transform: rotate(${bearing}deg); width: 19px; height: 27px;">`,
+    iconSize: [19, 27],
+    iconAnchor: [9.5, 13.5],
+    className: 'custom-icon'
+  });
+
   let popupContent = `
-  <div>
-    <p><strong>Route Start:</strong> ${routeDetails.start}</p>
-    <p><strong>Route End:</strong> ${routeDetails.end}</p>
-    <p><strong>Completion:</strong> ${routeDetails.percentage.toFixed(2)}%</p>
-  </div>
-`;
+    <div>
+      <p><strong>Route Start:</strong> ${routeDetails.start}</p>
+      <p><strong>Route End:</strong> ${routeDetails.end}</p>
+      <p><strong>Completion:</strong> ${routeDetails.percentage.toFixed(2)}%</p>
+    </div>
+  `;
 
   if (markers[sourceId]) {
-    markers[sourceId].setLatLng(newPosition).bindPopup(popupContent);
+    markers[sourceId].setLatLng(newPosition).setIcon(rotatedCarIcon).bindPopup(popupContent);
   } else {
-    markers[sourceId] = L.marker(newPosition)
+    markers[sourceId] = L.marker(newPosition, { icon: rotatedCarIcon })
       .addTo(map)
       .bindPopup(popupContent);
   }
@@ -47,7 +62,7 @@ export function calculateLength(coordinates: number[][]) {
   return GeometryUtil.length(polyline);
 }
 
-export async function addIframe(clusterId: string, userId: string) {
+export async function addIframe(clusterId: string, userId: string, mapType: string) {
   const iframe = document.createElement('iframe');
   iframe.id = `iframe-component-${userId}`;
   const user = userId;
@@ -57,7 +72,7 @@ export async function addIframe(clusterId: string, userId: string) {
     hostname += ':8100';
   }
   const iframeHostname = `${userId}.${hostname}`;
-  iframe.src = `${protocol}//${iframeHostname}/gpsTracking/route?cluster=${clusterId}&user=${user}`;
+  iframe.src = `${protocol}//${iframeHostname}/gpsTracking/route?cluster=${clusterId}&user=${user}&mapType=${mapType}`;
   iframe.style.display = 'none';
 
   document.body.appendChild(iframe);
@@ -71,49 +86,35 @@ export function displayRouteDetails(routeDetails: IRouteDetails, routeId: string
   if (!detailsElement) return;
 
   let routeContainer = document.getElementById(`route-${routeId}`);
+
   if (!routeContainer) {
     routeContainer = document.createElement('div');
     routeContainer.id = `route-${routeId}`;
     routeContainer.classList.add('route-container');
     detailsElement.appendChild(routeContainer);
+  } else {
+    routeContainer.innerHTML = '';
+  }
 
-    if (type === 'commercial') {
-      const header = document.createElement('h3');
-      header.textContent = `Route ID: ${routeId}`;
-      routeContainer.appendChild(header);
+  const infoElements = [
+    { label: 'Route ID:', value: type === 'commercial' ? routeId : 'N/A' },
+    { label: 'From:', value: type === 'commercial' ? routeDetails.start : 'N/A' },
+    { label: 'Arriving at:', value: routeDetails.end },
+  ];
+
+  infoElements.forEach((item) => {
+    const element = document.createElement('div');
+    if (item.value !== 'N/A') {
+      element.innerHTML = `<h4 style="display: inline;">${item.label}</h4> <span>${item.value}</span>`;
+      routeContainer!.appendChild(element);
     }
-  } else {
-    if (type === 'commercial') {
-      routeContainer.innerHTML = `<h3>Route ID: ${routeId}</h3>`;
-    } else {
-      routeContainer.innerHTML = '';
-    }
-  }
+  });
 
-  if (type === 'commercial') {
-    const startElement = document.createElement('p');
-    startElement.textContent = `From: ${routeDetails.start}`;
-    routeContainer.appendChild(startElement);
+  const remainingTime = routeDetails.length / (SPEED_KMH / 3.6);
+  const timeString = formatTime(remainingTime - (remainingTime * (routeDetails.percentage / 100)));
 
-    const endElement = document.createElement('p');
-    endElement.textContent = `To: ${routeDetails.end}`;
-    routeContainer.appendChild(endElement);
-  } else {
-    const endElement = document.createElement('p');
-    endElement.innerHTML = `Arriving at:<br> ${routeDetails.end}`;
-    routeContainer.appendChild(endElement);
-  }
-
-  const totalTime = routeDetails.length / (SPEED_KMH / 3.6);
-  const remainingTime = totalTime * ((100 - routeDetails.percentage) / 100);
-  const timeString = formatTime(remainingTime);
-
-  const estimatedTimeElement = document.createElement('p');
-  if (type === 'commercial') {
-    estimatedTimeElement.textContent = `Remaining time: ${timeString}`;
-  } else {
-    estimatedTimeElement.innerHTML = `Remaining time:<br> ${timeString}`;
-  }
+  const estimatedTimeElement = document.createElement('div');
+  estimatedTimeElement.innerHTML = `<h4 style="display: inline;">Remaining time:</h4> <span>${timeString}</span>`;
   routeContainer.appendChild(estimatedTimeElement);
 }
 
@@ -125,4 +126,20 @@ function formatTime(seconds: number) {
   const paddedMinutes = minutes.toString().padStart(2, '0');
 
   return `${paddedHours}:${paddedMinutes}`;
+}
+
+function calculateBearing(startCoords: number[], destCoords: number[]) {
+  const [startLat, startLng] = startCoords;
+  const [destLat, destLng] = destCoords;
+  const startLatRad = startLat * Math.PI / 180;
+  const startLngRad = startLng * Math.PI / 180;
+  const destLatRad = destLat * Math.PI / 180;
+  const destLngRad = destLng * Math.PI / 180;
+
+  const y = Math.sin(destLngRad - startLngRad) * Math.cos(destLatRad);
+  const x = Math.cos(startLatRad) * Math.sin(destLatRad) -
+            Math.sin(startLatRad) * Math.cos(destLatRad) * Math.cos(destLngRad - startLngRad);
+  const bearing = Math.atan2(y, x) * 180 / Math.PI;
+
+  return (bearing + 360) % 360;
 }

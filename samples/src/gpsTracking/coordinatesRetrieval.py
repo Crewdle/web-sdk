@@ -9,6 +9,7 @@ START_POINT = (45.504785, -73.612517)
 END_POINT1 = (45.5577438, -73.5541227)
 END_POINT2 = (45.4985219, -73.581975)
 END_POINT3 = (45.5054701, -73.5282067)
+END_POINT4 = (45.4919897, -73.6939277)
 UPDATE_FREQUENCY = 0.005
 
 G = ox.graph_from_place('Montreal, Quebec, Canada', network_type='drive')
@@ -26,8 +27,8 @@ def interpolate_line_string(line_string, segment_length):
     interpolated_points.append(line_string.coords[-1])
     return [(lat, lon) for lon, lat in interpolated_points]
 
-def generateRoute(end_point):
-    start_node = ox.distance.nearest_nodes(G, X=START_POINT[1], Y=START_POINT[0])
+def generateRoute(start_point, end_point):
+    start_node = ox.distance.nearest_nodes(G, X=start_point[1], Y=start_point[0])
     end_node = ox.distance.nearest_nodes(G, X=end_point[1], Y=end_point[0])
     shortest_path = nx.shortest_path(G, start_node, end_node, weight='length')
 
@@ -50,14 +51,16 @@ def generateRoute(end_point):
     coordinates_list = [list(coord) for coord in dense_points]
     return coordinates_list, total_length
 
-coordinates1 = generateRoute(END_POINT1)
-coordinates2 = generateRoute(END_POINT2)
-coordinates3 = generateRoute(END_POINT3)
+coordinates1 = generateRoute(START_POINT, END_POINT1)
+coordinates2 = generateRoute(START_POINT, END_POINT2)
+coordinates3 = generateRoute(START_POINT, END_POINT3)
+coordinates4 = generateRoute(END_POINT1, END_POINT4)
 
 routes = [
-    {"coordinates": coordinates1[0], "start": 'WAREHOUSE', "end": 'Olympic Stadium of Montreal', "length": coordinates1[1]},
-    {"coordinates": coordinates2[0], "start": 'WAREHOUSE', "end": 'Montreal Museum of Fine Arts', "length": coordinates2[1]},
-    {"coordinates": coordinates3[0], "start": 'WAREHOUSE', "end": 'Montreal Casino', "length": coordinates3[1]},
+    {"coordinates": coordinates1[0], "start": 'Warehouse', "end": 'Olympic Stadium of Montreal', "length": coordinates1[1]},
+    {"coordinates": coordinates2[0], "start": 'Warehouse', "end": 'Montreal Museum of Fine Arts', "length": coordinates2[1]},
+    {"coordinates": coordinates3[0], "start": 'Warehouse', "end": 'Montreal Casino', "length": coordinates3[1]},
+    {"coordinates": coordinates4[0], "start": 'Warehouse', "end": 'IKEA Montreal', "length": coordinates4[1]}
 ]
 
 ts_content = "\n".join([

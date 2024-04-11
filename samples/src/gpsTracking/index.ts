@@ -14,12 +14,14 @@ import { LatLngExpression } from 'leaflet';
 // This is used to define the structure of the messages that can pass through the Pub/Sub
 interface ITrackingMessage {
   coordinate: number[];
+  oldPosition: number[];
   routeDetails: IRouteDetails;
 }
 
 let userId: string;
 let initialized = false;
 let follow = false;
+let secondRouteLength = 0;
 
 // Load the tracking setup
 export async function start(clusterId: string, userIdStart: string, mapType: string) {
@@ -55,7 +57,7 @@ export async function start(clusterId: string, userIdStart: string, mapType: str
       initialized = true;
     }
 
-    updateMarkerPosition(sourceId, content.coordinate as LatLngExpression, content.routeDetails, follow);
+    updateMarkerPosition(sourceId, content.coordinate as LatLngExpression, content.oldPosition, content.routeDetails, follow);
     displayRouteDetails(content.routeDetails, sourceId, mapType);
   });
 
@@ -66,6 +68,6 @@ export async function start(clusterId: string, userIdStart: string, mapType: str
   }
 
   for (let i = 1; i < routeNb + 1; i++) {
-    addIframe(clusterId, `route${i}`);
+    addIframe(clusterId, `route${i}`, mapType);
   }
 }
