@@ -2,7 +2,6 @@ import { SDK } from '@crewdle/web-sdk';
 import { vendorId, accessToken } from '../credentials';
 import { route1, route2, route3, route4 } from './routes';
 import { calculateLength, IRouteDetails } from './helpers';
-import { map } from 'leaflet';
 
 interface ITrackingMessage {
   coordinate: number[];

@@ -1,4 +1,9 @@
 {
+  "projects": {
+    "stg": "crewdle-sdk-stg",
+    "prd": "crewdle-sdk",
+    "default": "crewdle-sdk-stg"
+  },
   "targets": {
     "crewdle-sdk-stg": {
       "hosting": {
@@ -6,10 +11,14 @@
           "crewdle-samples-stg"
         ]
       }
+    },
+    "crewdle-sdk": {
+      "hosting": {
+        "crewdle-samples": [
+          "crewdle-samples"
+        ]
+      }
     }
   },
-  "projects": {
-    "stg": "crewdle-sdk-stg",
-    "default": "crewdle-sdk-stg"
-  }
+  "etags": {}
 }

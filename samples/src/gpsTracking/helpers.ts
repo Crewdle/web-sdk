@@ -71,7 +71,7 @@ export async function addIframe(clusterId: string, userId: string, mapType: stri
   if (hostname === 'localhost') {
     hostname += ':8100';
   }
-  const iframeHostname = `${userId}.${hostname}`;
+  const iframeHostname = `${hostname}`;
   iframe.src = `${protocol}//${iframeHostname}/gpsTracking/route?cluster=${clusterId}&user=${user}&mapType=${mapType}`;
   iframe.style.display = 'none';
 
