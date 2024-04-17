@@ -5,6 +5,7 @@ import 'leaflet-rotatedmarker';
 let map: L.Map;
 let markers: { [sourceId: string]: L.Marker } = {};
 const SPEED_KMH = 25;
+const PI_CONST = Math.PI / 180;
 
 export interface IRouteDetails {
   length: number;
@@ -127,10 +128,10 @@ function formatTime(seconds: number) {
 function calculateBearing(startCoords: number[], destCoords: number[]) {
   const [startLat, startLng] = startCoords;
   const [destLat, destLng] = destCoords;
-  const startLatRad = startLat * Math.PI / 180;
-  const startLngRad = startLng * Math.PI / 180;
-  const destLatRad = destLat * Math.PI / 180;
-  const destLngRad = destLng * Math.PI / 180;
+  const startLatRad = startLat * PI_CONST;
+  const startLngRad = startLng * PI_CONST;
+  const destLatRad = destLat * PI_CONST;
+  const destLngRad = destLng * PI_CONST;
 
   const y = Math.sin(destLngRad - startLngRad) * Math.cos(destLatRad);
   const x = Math.cos(startLatRad) * Math.sin(destLatRad) -
