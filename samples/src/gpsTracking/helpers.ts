@@ -1,15 +1,10 @@
-import L, { LatLngExpression } from 'leaflet';
+import L, { LatLngExpression, marker } from 'leaflet';
 import GeometryUtil from 'leaflet-geometryutil';
+import 'leaflet-rotatedmarker';
 
 let map: L.Map;
 let markers: { [sourceId: string]: L.Marker } = {};
 const SPEED_KMH = 25;
-const carIcon = L.icon({
-  iconUrl: 'car.png',
-  iconSize: [19, 27],
-  iconAnchor: [9.5, 13.5],
-  popupAnchor: [-1.5, -38]
-});
 
 export interface IRouteDetails {
   length: number;
@@ -17,6 +12,13 @@ export interface IRouteDetails {
   end: string;
   percentage: number;
 }
+
+const carIcon = L.icon({
+  iconUrl: 'car.png',
+  iconSize: [19, 27],
+  iconAnchor: [9.5, 13.5],
+  className: 'custom-icon'
+});
 
 export function initializeMap(defaultPosition: LatLngExpression) {
   map = L.map('map').setView(defaultPosition, 13);
@@ -29,13 +31,6 @@ export function initializeMap(defaultPosition: LatLngExpression) {
 export function updateMarkerPosition(sourceId: string, newPosition: LatLngExpression, oldPosition: number[], routeDetails: IRouteDetails, follow: boolean) {
   const bearing = calculateBearing(oldPosition, newPosition as number[]);
 
-  const rotatedCarIcon = L.divIcon({
-    html: `<img src="car.png" style="transform: rotate(${bearing}deg); width: 19px; height: 27px;">`,
-    iconSize: [19, 27],
-    iconAnchor: [9.5, 13.5],
-    className: 'custom-icon'
-  });
-
   let popupContent = `
     <div>
       <p><strong>Route Start:</strong> ${routeDetails.start}</p>
@@ -45,13 +40,14 @@ export function updateMarkerPosition(sourceId: string, newPosition: LatLngExpres
   `;
 
   if (markers[sourceId]) {
-    markers[sourceId].setLatLng(newPosition).setIcon(rotatedCarIcon).bindPopup(popupContent);
+    markers[sourceId].setLatLng(newPosition)
+                     .bindPopup(popupContent)
+                     .setRotationAngle(bearing);
   } else {
-    markers[sourceId] = L.marker(newPosition, { icon: rotatedCarIcon })
+    markers[sourceId] = L.marker(newPosition, { icon: carIcon })
       .addTo(map)
-      .bindPopup(popupContent);
+      .bindPopup(popupContent)
   }
-
   if (follow) {
     map.setView(newPosition);
   }

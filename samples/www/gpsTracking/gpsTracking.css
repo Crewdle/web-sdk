@@ -81,3 +81,7 @@ body, html {
   border: none !important;
   pointer-events: all;
 }
+
+.leaflet-marker-icon {
+  transition: transform 100ms ease;
+}

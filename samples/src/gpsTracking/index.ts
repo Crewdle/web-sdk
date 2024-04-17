@@ -21,7 +21,6 @@ interface ITrackingMessage {
 let userId: string;
 let initialized = false;
 let follow = false;
-let secondRouteLength = 0;
 
 // Load the tracking setup
 export async function start(clusterId: string, userIdStart: string, mapType: string) {

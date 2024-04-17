@@ -13,11 +13,13 @@
   "author": "Crewdle Technologies Inc.",
   "license": "ISC",
   "dependencies": {
-    "@crewdle/web-sdk": "^0.2.2",
     "@crewdle/mist-connector-rxdb": "^1.0.0",
+    "@crewdle/web-sdk": "^0.2.2",
+    "@types/leaflet-rotatedmarker": "^0.2.5",
     "d3": "^7.8.5",
     "leaflet": "^1.9.4",
-    "leaflet-geometryutil": "^0.10.3"
+    "leaflet-geometryutil": "^0.10.3",
+    "leaflet-rotatedmarker": "^0.2.0"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",
