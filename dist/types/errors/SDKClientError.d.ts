@@ -4,6 +4,10 @@
  */
 export declare enum SDKClientErrorCodes {
     /**
+     * The cluster has already been joined.
+     */
+    ClusterAlreadyJoined = "cluster-already-joined",
+    /**
      * The feature is not enabled. Contact our support team for more information.
      */
     FeatureNotEnabled = "feature-not-enabled",
