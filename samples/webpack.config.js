@@ -6,6 +6,8 @@ module.exports = {
     chat: './src/chat/index.ts',
     monitoring: './src/monitoring/index.ts',
     monitoringComponent: './src/monitoring/component.ts',
+    gpsTracking: './src/gpsTracking/index.ts',
+    route: './src/gpsTracking/route.ts',
   },
 
   module: {

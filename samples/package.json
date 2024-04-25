@@ -5,17 +5,25 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "firebase use stg && firebase serve -p 8100",
+    "full-build-tracking": "python3 src/gpsTracking/coordinatesRetrieval.py && npm run build",
     "build": "webpack --mode=development",
     "build-prd": "webpack --mode=production"
   },
   "author": "Crewdle Technologies Inc.",
   "license": "ISC",
   "dependencies": {
+    "@crewdle/mist-connector-rxdb": "^1.0.0",
     "@crewdle/web-sdk": "^0.2.2",
-    "d3": "^7.8.5"
+    "d3": "^7.8.5",
+    "leaflet": "^1.9.4",
+    "leaflet-geometryutil": "^0.10.3",
+    "leaflet-rotatedmarker": "^0.2.0"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",
+    "@types/leaflet": "^1.9.8",
+    "@types/leaflet-rotatedmarker": "^0.2.5",
     "firebase": "^10.8.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",

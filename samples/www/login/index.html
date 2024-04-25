@@ -40,6 +40,10 @@
         url = `../chat/chat?cluster=${encodeURIComponent(cluster)}&user=${encodeURIComponent(userName)}`;
       } else if (window.location.search.includes('sample=monitoring')) {
         url = `../monitoring/monitoring?cluster=${encodeURIComponent(cluster)}&user=${encodeURIComponent(userName)}`;
+      } else if (window.location.search.includes('sample=personnal')) {
+        url = `../gpsTracking/personnal?cluster=${encodeURIComponent(cluster)}&user=${encodeURIComponent(userName)}`;
+      } else if (window.location.search.includes('sample=commercial')) {
+        url = `../gpsTracking/commercial?cluster=${encodeURIComponent(cluster)}&user=${encodeURIComponent(userName)}`;
       }
       window.location.href = url;
     };

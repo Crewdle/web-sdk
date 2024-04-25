@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Route Frame</title>
+  <script src="/scripts/route.js"></script>
+</head>
+<body>
+  <script>
+    const queryParams = new URLSearchParams(window.location.search);
+    const clusterId = queryParams.get('cluster');
+    const userId = queryParams.get('user');
+    const mapType = queryParams.get('mapType');
+
+    if (!clusterId || !userId) {
+        throw new Error('Missing clusterId or userId query params');
+      }
+
+    window.onload = async function () {
+      Crewdle.start(clusterId, userId, mapType);
+    };
+  </script>
+</body>
+
+</html>

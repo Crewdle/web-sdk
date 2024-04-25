@@ -1,0 +1,87 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #18191A;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  background: linear-gradient(90deg, #4C17CA 0%, #FF5322 61.13%);
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.personnal-content {
+  width: 50vh;
+  align-self: center;
+  border-radius: 10px;
+}
+
+.map {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.route-details {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.route-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.commercial-map {
+  height: 88.1vh;
+}
+
+.user-map {
+  margin: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  overflow: hidden;
+  height: 70vh;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  margin-bottom: 0px;
+}
+
+.tracking-info {
+  background-color: #fff;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.2);
+  margin: 5px;
+  margin-top: 0px;
+}
+
+.visible-iframe {
+  width: 100%;
+  height: 400px;
+  display: block;
+}
+
+.custom-icon img {
+  pointer-events: none;
+}
+
+
+.custom-icon {
+  background: none !important;
+  border: none !important;
+  pointer-events: all;
+}
+
+.leaflet-marker-icon {
+  transition: transform 100ms ease;
+}
