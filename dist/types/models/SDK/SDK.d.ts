@@ -1,4 +1,4 @@
-import { ICluster, IAuthAgent, IAuthUser, IAgentCredentials, IUserCredentials, ISDK, ISDKOptions, IAgentCapacity } from '@crewdle/web-sdk-types';
+import { ICluster, IAuthAgent, IAuthUser, IAgentCredentials, IUserCredentials, ISDK, ISDKOptions } from '@crewdle/web-sdk-types';
 /**
  * The SDK class.
  * This is the entry point for the Crewdle SDK.
@@ -38,7 +38,7 @@ export declare class SDK implements ISDK {
      * @param reportCapacity A callback to report the agent capacity.
      * @returns A promise that resolves with the authenticated agent.
      */
-    authenticateAgent(credentials: IAgentCredentials, reportCapacity?: () => Promise<IAgentCapacity>): Promise<IAuthAgent>;
+    authenticateAgent(credentials: IAgentCredentials): Promise<IAuthAgent>;
     /**
      * Join a cluster.
      * @param clusterId The ID of the cluster to join.
