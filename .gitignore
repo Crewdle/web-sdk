@@ -10,3 +10,4 @@ guides/
 node_modules/
 samples/www/scripts/
 samples/cache/
+sdk.js.LICENSE.txt

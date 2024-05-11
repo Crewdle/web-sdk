@@ -23,6 +23,10 @@ export declare class SDK implements ISDK {
      */
     static timestamp(): Promise<number>;
     /**
+     * Get if the SDK is running in production mode.
+     */
+    static isProduction(): boolean;
+    /**
      * Close the SDK.
      */
     close(): Promise<void>;
