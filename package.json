@@ -22,8 +22,8 @@
     "@crewdle/mist-connector-opfs": "^1.0.11",
     "@crewdle/mist-connector-webrtc-browser": "^1.0.4",
     "@crewdle/web-sdk-types": "^1.0.10",
-    "aws-amplify": "^6.0.13",
-    "firebase": "^10.8.0",
+    "aws-amplify": "^6.3.0",
+    "firebase": "^10.11.1",
     "uuid": "^9.0.1"
   },
   "files": [
