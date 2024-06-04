@@ -12,6 +12,62 @@ export declare enum SDKClientErrorCodes {
      */
     FeatureNotEnabled = "feature-not-enabled",
     /**
+     * The Generative AI Context already exists.
+     */
+    GenerativeAIContextAlreadyExists = "generative-ai-context-already-exists",
+    /**
+     * The Generative AI Context does not exist.
+     */
+    GenerativeAIContextDoesNotExist = "generative-ai-context-does-not-exist",
+    /**
+     * The Generative AI label conflicts with an existing label.
+     */
+    GenerativeAILabelConflict = "generative-ai-label-conflict",
+    /**
+     * The Generative AI Worker already exists.
+     */
+    GenerativeAIWorkerAlreadyExists = "generative-ai-worker-already-exists",
+    /**
+     * The Generative AI Worker is missing required connectors.
+     */
+    GenerativeAIWorkerMissingConnectors = "generative-ai-worker-missing-connectors",
+    /**
+     * The Generative AI Worker model is not synchronized.
+     */
+    GenerativeAIWorkerModelSyncError = "generative-ai-worker-model-sync-error",
+    /**
+     * The job dispatcher already exists.
+     */
+    JobDispatcherAlreadyExists = "job-dispatcher-already-exists",
+    /**
+     * The job dispatcher does not exist.
+     */
+    JobDispatcherDoesNotExist = "job-dispatcher-does-not-exist",
+    /**
+     * The job dispatched already exists in the job dispatcher.
+     */
+    JobDispatcherJobExists = "job-dispatcher-job-exists",
+    /**
+     * The job does not exist in the job dispatcher.
+     */
+    JobDispatcherJobNotFound = "job-dispatcher-job-not-found",
+    /**
+     * The job dispatched is not supported by the job dispatcher.
+     */
+    JobDispatcherInvalidJobType = "job-dispatcher-invalid-job-type",
+    /**
+     * The job worker already exists.
+     */
+    JobWorkerAlreadyExists = "job-worker-already-exists",
+    /**
+     * The job worker already exists.
+     */
+    JobWorkerDoesNotExist = "job-worker-does-not-exist",
+    /**
+     * The job worker is invalid.
+     */
+    JobWorkerInvalidType = "job-worker-invalid-type",
+    /**
      * The object store already exists.
      */
     ObjectStoreAlreadyExists = "object-store-already-exists",
