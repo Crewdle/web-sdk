@@ -64,10 +64,6 @@ export declare enum SDKClientErrorCodes {
      */
     JobWorkerDoesNotExist = "job-worker-does-not-exist",
     /**
-     * The job worker is invalid.
-     */
-    JobWorkerInvalidType = "job-worker-invalid-type",
-    /**
      * The object store already exists.
      */
     ObjectStoreAlreadyExists = "object-store-already-exists",
@@ -99,6 +95,10 @@ export declare enum SDKClientErrorCodes {
      * Internal SDK error. Contact our support team if the error persists.
      */
     InternalSDKError = "internal-sdk-error",
+    /**
+     * Invalid access.
+     */
+    InvalidAccess = "invalid-access",
     /**
      * The key-value database already exists.
      */
