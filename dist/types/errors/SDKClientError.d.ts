@@ -28,13 +28,29 @@ export declare enum SDKClientErrorCodes {
      */
     GenerativeAIWorkerAlreadyExists = "generative-ai-worker-already-exists",
     /**
-     * The Generative AI Worker is missing required connectors.
+     * The Generative AI Worker is missing required connector.
      */
-    GenerativeAIWorkerMissingConnectors = "generative-ai-worker-missing-connectors",
+    GenerativeAIWorkerMissingConnector = "generative-ai-worker-missing-connector",
     /**
      * The Generative AI Worker model is not synchronized.
      */
     GenerativeAIWorkerModelSyncError = "generative-ai-worker-model-sync-error",
+    /**
+     * The graph database already exists.
+     */
+    GraphDatabaseAlreadyExists = "graph-database-already-exists",
+    /**
+     * The graph database does not exist.
+     */
+    GraphDatabaseDoesNotExist = "graph-database-does-not-exist",
+    /**
+     * The graph database connector is missing.
+     */
+    GraphDatabaseMissingConnector = "graph-database-missing-connector",
+    /**
+     * The graph database name is not a string.
+     */
+    GraphDatabaseNameNotString = "graph-database-name-not-string",
     /**
      * The job dispatcher already exists.
      */
@@ -190,7 +206,23 @@ export declare enum SDKClientErrorCodes {
     /**
      * The node type is not supported.
      */
-    NodeTypeNotSupported = "node-type-not-supported"
+    NodeTypeNotSupported = "node-type-not-supported",
+    /**
+     * The vector database already exists.
+     */
+    VectorDatabaseAlreadyExists = "vector-database-already-exists",
+    /**
+     * The vector database does not exist.
+     */
+    VectorDatabaseDoesNotExist = "vector-database-does-not-exist",
+    /**
+     * The vector database connector is missing.
+     */
+    VectorDatabaseMissingConnector = "vector-database-missing-connector",
+    /**
+     * The vector database name is not a string.
+     */
+    VectorDatabaseNameNotString = "vector-database-name-not-string"
 }
 /**
  * SDK Client Error - Any error that is thrown by the SDK will be an instance of this class.
