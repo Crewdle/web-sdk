@@ -1,4 +1,4 @@
-import { ICluster, IAuthAgent, IAuthUser, IAgentCredentials, IUserCredentials, ISDK, ISDKOptions } from '@crewdle/web-sdk-types';
+import { ICluster, IAuthAgent, IAuthUser, IAgentCredentials, IUserCredentials, ISDK, ISDKOptions, ISDKCloseOptions } from '@crewdle/web-sdk-types';
 /**
  * The SDK class.
  * This is the entry point for the Crewdle SDK.
@@ -29,7 +29,7 @@ export declare class SDK implements ISDK {
     /**
      * Close the SDK.
      */
-    close(): Promise<void>;
+    close(options?: ISDKCloseOptions): Promise<void>;
     /**
      * Authenticate a user.
      * @param credentials The credentials to authenticate the user with.

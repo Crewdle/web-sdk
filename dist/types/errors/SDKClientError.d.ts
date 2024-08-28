@@ -4,6 +4,10 @@
  */
 export declare enum SDKClientErrorCodes {
     /**
+     * The Connection DataChannel's buffer is not empty.
+     */
+    ConnectionBufferNotEmpty = "connection-buffer-not-empty",
+    /**
      * The cluster has already been joined.
      */
     ClusterAlreadyJoined = "cluster-already-joined",

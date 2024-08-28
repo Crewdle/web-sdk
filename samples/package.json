@@ -1,6 +1,6 @@
 {
   "name": "crewdle-samples",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Samples using the Crewdle SDK",
   "main": "index.js",
   "scripts": {
@@ -8,13 +8,14 @@
     "serve": "firebase use stg && firebase serve -p 8100",
     "full-build-tracking": "python3 src/gpsTracking/coordinatesRetrieval.py && npm run build",
     "build": "webpack --mode=development",
-    "build-prd": "webpack --mode=production"
+    "build-prd": "webpack --mode=production",
+    "build-and-copy-sdk": "cp -r ../dist/ node_modules/@crewdle/web-sdk/dist"
   },
   "author": "Crewdle Technologies Inc.",
   "license": "ISC",
   "dependencies": {
     "@crewdle/mist-connector-rxdb": "^1.0.0",
-    "@crewdle/web-sdk": "^0.2.2",
+    "@crewdle/web-sdk": "^0.5.0",
     "d3": "^7.8.5",
     "leaflet": "^1.9.4",
     "leaflet-geometryutil": "^0.10.3",
