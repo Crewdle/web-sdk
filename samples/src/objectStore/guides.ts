@@ -34,10 +34,11 @@ await sdk.authenticateUser(credentials);
 const cluster = await sdk.joinCluster('CLUSTER_ID');
 
 // Open an object store bucket with a specific name
-const objectStore = await cluster.openObjectStoreBucket('objectStore');
+const objectStoreLabel = 'object-store-label';
+const objectStore = await cluster.openObjectStoreBucket(objectStoreLabel);
 
 // Subscribe to the object store for events
-objectStore.subscribe(({ event, payload}) => {
+objectStore.subscribe(objectStoreLabel, ({ event, payload}) => {
   switch (event) {
     // Fired when a new file is written or updated
     case StorageEventType.FileWrite:
@@ -66,7 +67,7 @@ objectStore.subscribe(({ event, payload}) => {
   }
 });
 
-let file = new File(['Writing', 'a', 'file'], 'crewdleFile');
+const file = new File(['Writing', 'a', 'file'], 'crewdleFile');
 const path = '/';
 const newPath = '/newPath';
 
@@ -82,13 +83,13 @@ await objectStore.unpublish(newPath);
 
 // List the files and folders in the object store at a specific path
 await objectStore.list(newPath);
-await objectStore.list(path, true);
+await objectStore.list(path, { recursive: true, includeSyncingFiles: false });
 
 // Get a file from the object store at a specific path
-file = await objectStore.get(newPath);
+const object = await objectStore.get(newPath);
 
 // Unsubscribe from the object store
-objectStore.unsubscribe();
+objectStore.unsubscribe(objectStoreLabel);
 
 // Close the object store
 objectStore.close();

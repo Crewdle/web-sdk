@@ -19,7 +19,7 @@ const cluster = await sdk.joinCluster('CLUSTER_ID');
 
 // Open a Generative AI Context with the name of the AI Context associated with the VPM in the Generative AI section of the Crewdle dashboard
 // Configure your AI Context at https://dashboard.crewdle.com/generative-ai
-const generativeAIContext = cluster.openGenerativeAIContext('CONTEXT_ID');
+const generativeAIContext = await cluster.openGenerativeAIContext('CONTEXT_ID');
 
 const prompt = 'How do you instantiate a Crewdle Generative AI Context?';
 

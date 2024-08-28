@@ -226,7 +226,7 @@ async function renderFile(file: IFile, senderId: string, timestamp: number) {
   // Get the file from the object store using its path
   try {
     const fileObject = await objectStore.get(file.path);
-    reader.readAsDataURL(fileObject);
+    reader.readAsDataURL(fileObject.slice());
   } catch (error: any) {
     if (error.code === SDKClientErrorCodes.ObjectStoreNotInSync) {
       setTimeout(() => {
