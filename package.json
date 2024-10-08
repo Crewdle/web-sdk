@@ -1,6 +1,6 @@
 {
   "name": "@crewdle/web-sdk",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "The Web SDK to integrate the Crewdle Mist Computing Platform",
   "main": "dist/sdk.js",
   "types": "dist/types/index.d.ts",
@@ -21,9 +21,9 @@
     "@crewdle/mist-connector-indexed-db": "1.0.10",
     "@crewdle/mist-connector-opfs": "1.0.14",
     "@crewdle/mist-connector-webrtc-browser": "1.0.4",
-    "@crewdle/web-sdk-types": "1.0.22",
-    "aws-amplify": "^6.3.8",
-    "firebase": "^10.12.3",
+    "@crewdle/web-sdk-types": "1.0.24",
+    "aws-amplify": "^6.6.4",
+    "firebase": "^10.14.0",
     "uuid": "^10.0.0"
   },
   "files": [

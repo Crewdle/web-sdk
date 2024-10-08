@@ -12,6 +12,30 @@ export declare enum SDKClientErrorCodes {
      */
     ClusterAlreadyJoined = "cluster-already-joined",
     /**
+     * The external storage connection already exists.
+     */
+    ExternalStorageConnectionAlreadyExists = "external-storage-connection-already-exists",
+    /**
+     * The external storage connection is already subscribed.
+     */
+    ExternalStorageConnectionAlreadySubscribed = "external-storage-connection-already-subscribed",
+    /**
+     * The external storage connection does not exist.
+     */
+    ExternalStorageConnectionDoesNotExist = "external-storage-connection-does-not-exist",
+    /**
+     * The external storage connectiors are missing.
+     */
+    ExternalStorageConnectorsMissing = "external-storage-connectors-missing",
+    /**
+     * The path is invalid.
+     */
+    ExternalStorageInvalidPath = "external-storage-invalid-path",
+    /**
+     * The external storage connection name is not a string.
+     */
+    ExternalStorageNameNotString = "external-storage-name-not-string",
+    /**
      * The feature is not enabled. Contact our support team for more information.
      */
     FeatureNotEnabled = "feature-not-enabled",
@@ -23,6 +47,10 @@ export declare enum SDKClientErrorCodes {
      * The Generative AI Context does not exist.
      */
     GenerativeAIContextDoesNotExist = "generative-ai-context-does-not-exist",
+    /**
+     * The Generative AI Job is missing the thread ID.
+     */
+    GenerativeAIContextJobMissingThreadId = "generative-ai-context-job-missing-thread-id",
     /**
      * The Generative AI label conflicts with an existing label.
      */
