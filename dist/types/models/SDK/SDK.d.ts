@@ -1,4 +1,4 @@
-import { ICluster, IAuthAgent, IAuthUser, IAgentCredentials, IUserCredentials, ISDK, ISDKOptions, ISDKCloseOptions } from '@crewdle/web-sdk-types';
+import { ICluster, IAuthAgent, IAuthUser, IAgentCredentials, IUserCredentials, ISDK, ISDKOptions, ISDKCloseOptions, NodeType } from '@crewdle/web-sdk-types';
 /**
  * The SDK class.
  * This is the entry point for the Crewdle SDK.
@@ -17,7 +17,7 @@ export declare class SDK implements ISDK {
      * @param secretKey The secret key to use for the SDK when calling from a server.
      * @returns An instance of the SDK.
      */
-    static getInstance(vendorId: string, accessToken: string, options?: ISDKOptions, secretKey?: string): Promise<ISDK>;
+    static getInstance(vendorId: string, accessToken: string, mode: NodeType, options?: ISDKOptions, secretKey?: string): Promise<ISDK>;
     /**
      * Get the current estimated server timestamp.
      */

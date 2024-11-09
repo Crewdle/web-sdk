@@ -240,6 +240,10 @@ export declare enum SDKClientErrorCodes {
      */
     NodeTypeNotSupported = "node-type-not-supported",
     /**
+     * The node type is required.
+     */
+    NodeTypeRequired = "node-type-required",
+    /**
      * The vector database already exists.
      */
     VectorDatabaseAlreadyExists = "vector-database-already-exists",
