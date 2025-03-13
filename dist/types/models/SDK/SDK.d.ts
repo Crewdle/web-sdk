@@ -43,6 +43,12 @@ export declare class SDK implements ISDK {
      */
     authenticateAgent(credentials: IAgentCredentials): Promise<IAuthAgent>;
     /**
+     * Validate a key.
+     * @param key The key to validate.
+     * @returns A promise that resolves with the vendor ID.
+     */
+    validateKey(key: string): Promise<string>;
+    /**
      * Join a cluster.
      * @param clusterId The ID of the cluster to join.
      * @returns A promise that resolves with the cluster.

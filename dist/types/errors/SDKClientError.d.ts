@@ -4,6 +4,10 @@
  */
 export declare enum SDKClientErrorCodes {
     /**
+     * The API key is missing.
+     */
+    ApiKeyMissing = "api-key-missing",
+    /**
      * The Connection DataChannel's buffer is not empty.
      */
     ConnectionBufferNotEmpty = "connection-buffer-not-empty",
@@ -51,6 +55,10 @@ export declare enum SDKClientErrorCodes {
      * The Generative AI Job is missing the thread ID.
      */
     GenerativeAIContextJobMissingThreadId = "generative-ai-context-job-missing-thread-id",
+    /**
+     * The Generative AI Job is invalid.
+     */
+    GenerativeAIContextJobInvalidType = "generative-ai-context-job-invalid-type",
     /**
      * The Generative AI label conflicts with an existing label.
      */
