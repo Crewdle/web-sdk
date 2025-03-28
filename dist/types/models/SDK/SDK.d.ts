@@ -45,9 +45,10 @@ export declare class SDK implements ISDK {
     /**
      * Validate a key.
      * @param key The key to validate.
+     * @param origin The origin of the request.
      * @returns A promise that resolves with the vendor ID.
      */
-    validateKey(key: string): Promise<string>;
+    validateKey(key: string, origin?: string): Promise<string>;
     /**
      * Join a cluster.
      * @param clusterId The ID of the cluster to join.
