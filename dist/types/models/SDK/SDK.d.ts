@@ -52,8 +52,9 @@ export declare class SDK implements ISDK {
     /**
      * Join a cluster.
      * @param clusterId The ID of the cluster to join.
+     * @param standalone Whether to join the cluster as a standalone node.
      * @returns A promise that resolves with the cluster.
      * @throws {@link SDKClientErrorCodes.NodeNotAuthenticated} if the node is not authenticated.
      */
-    joinCluster(clusterId: string): Promise<ICluster>;
+    joinCluster(clusterId: string, standalone?: boolean): Promise<ICluster>;
 }
